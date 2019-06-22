@@ -1,0 +1,11 @@
+Package: /nvidia/
+Pin: release a=experimental
+Pin-Priority: 950
+
+Package: *
+Pin: release a=unstable
+Pin-Priority: 925
+
+Package: *
+Pin: release a=experimental
+Pin-Priority: 900

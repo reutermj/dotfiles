@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "updating to sid/experimental"
+sudo rm /etc/apt/sources.list
+sudo cp $HOME/.installscripts/sources.list /etc/apt/sources.list
+
+sudo dpkg --add-architecture i386
+
+sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --purge
+
+#sudo cp $HOME/.installscripts/pinning /etc/apt/preferences.d/pinning
+
+sudo apt-get install xorg i3-wm nvidia-driver
