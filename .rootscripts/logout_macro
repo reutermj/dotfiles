@@ -1,0 +1,5 @@
+#!/bin/bash
+#sudo iptables -I INPUT -p tcp --sport 6112 --tcp-flags PSH,ACK PSH,ACK -j REJECT --reject-with tcp-reset;
+#sleep 1;
+#sudo iptables -D INPUT -p tcp --sport 6112 --tcp-flags PSH,ACK PSH,ACK -j REJECT --reject-with tcp-reset;
+xdotool key --delay 0 --window $( xdotool search --limit 1 --all --pid $( pgrep PathOfExile_x64 ) --name Path ) Return slash e x i t Return

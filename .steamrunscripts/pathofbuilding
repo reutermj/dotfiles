@@ -1,0 +1,2 @@
+#!/bin/bash
+WINEPREFIX=~/.steam/steam/steamapps/compatdata/238960/pfx/ wine ~/.steam/steam/steamapps/compatdata/238960/pfx/drive_c/'Program Files (x86)'/PathofBuilding/'Path of Building.exe'
