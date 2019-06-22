@@ -1,0 +1,201 @@
+\title{The Completeness of First Order Logic}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Logical investigations are centered around the concept of consequence. Consequence is a relation between sentences of a language which expresses an account of what sentences follow from a collection of sentences\cite{restallbeall}. Although the concern of this paper is formal languages, consequence can be expressed as a relation between sentences of natural language.
+
+One of the primary tasks of logical consequence is the evaluation of the soundness of an argument. An \textit{argument} is a finite sequence of sentences such that on, the \textit{conclusion}, is claimed to be the consequence of the others, the \textit{premises}. An argument is said to be \textit{sound} if the conclusion is the consequence of the premises. There is a discrepancy between logical consequence and an argument. A sentence can be the consequence of infinitely many sentences, but arguments concern finitely many premises in support of a conclusion. An argument is from a set of sentences $\Gamma$ iff the only premises of the conclusion are members of $\Gamma$. A set of sentences is refutable iff there is an argument from it to a contradictory conclusion.
+
+This paper is concerned with formal arguments, or formal derivations. There are several methods for constructing formal derivations. In this paper, I present a system of natural deduction. This system is designed to copy the  
+
+A system of natural deduction abstracts the concept of an argument. A \textit{derivation} is a finite sequence of sentences where each sentence is either a premise or the derived from previous sentences using a rule. A derivation from a set of sentences $\Gamma$ to a conclusion $\phi$ is a derivation where $\phi$ appears on the last line and the only premises of it are from the set $\Gamma$. This paper concerns a specific rule set for constructing derivations in first-order logic.
+
+First, each rule in this set is sound. Otherwise stated, no derivation constructed with the correct application of these rules will conclude a sentence which is not the consequence of its premises. Second, I claim that this rule set is complete. It is possible to construct a derivation with this rule set from any set of sentences to any consequence of the set. In fact, I show that constructing such a derivation takes little creativity.
+ 
+Propositional logic is the study of unit propositions and logical connectives such as `and', `or', and `not'. Familiarity with the common truth functional semantics of propositional logic is assumed. Whether or not a sentence of propositional logic is the consequence of a finite set of propositional sentences can be decided with a finite procedure. One such test is the truth table test introduced by Ludwig Wittgenstein\cite{tractatus}. General familiarity with this procedure is assumed. 
+
+It is difficult to pick any arbitrary set of rules and make both of these claims. I discuss how one would go about developing a rule set which is both sound and complete. This discussion is based around the principle of reducing more difficult problems to easier problems. I consider the completeness of first-order logic to be the most difficult problem, but the completeness of finite propositional logic is a more straightforward problem.
+
+\section{Propositional Compactness}
+
+Kurt G{\"o}del\cite{godelcompleteness} originally presented the compactness theorem for first-order logic as a consequence of his completeness theorem. Later, compactness was given a proof using pure semantics, or model theory, following Leon Henkin's proof technique for the completeness of first-order logic. The proof of compactness in this section follows Henkin's technique, but in this section, I am proving a weaker result than the compactness of first-order logic. I am only proving the compactness of propositional logic. In a later section, I extend this to the the compactness of first-order logic. 
+
+This proof follows by demonstrating the implication 'if every finite subset of a set is satisfiable, then the set is satisfiable'. To simplify this discussion, a set of sentences is said to be \textit{compact} iff every finite subset of it is satisfiable. A set of sentences is \textit{maximally-compact} iff it is compact and is not properly included in any other compact set of sentences. Henkin's technique proceeds in two steps. First, a maximally-compact set of sentences is constructed from a compact set of sentences. Second, it is proved that for any maximally-compact set of sentences, an interpretation is constructed which models every sentence in the set.
+
+The construction technique starts with a compact set of sentences, then it progressively considers each sentence of the language including it if the property 'is compact' is preserved. At the end of this process, a maximally-compact set of sentences which contains the original set is constructed. To build an interpretation of the produced set, it is important that any sentence or its negation is included in a maximally-compact set of sentences. The following Lemma assures us that the procedure will inevitably include each sentence or its negation.
+
+\begin{lemma}
+	\label{lem:either-or-compact}
+	If $\Gamma$ is a compact set of sentences, then either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is compact.
+\end{lemma}
+
+\begin{proof}
+	Assume for proof by contrapositive that neither $\{ \phi \} \cup \Gamma$ nor $\{ \neg\phi \} \cup \Gamma$ are compact. By definition of compact, there is a finite subset $\{ \phi \} \cup \Delta_1$ of $\{ \phi \} \cup \Gamma $ such that $\{ \phi \} \cup \Delta_1$ is unsatisfiable, and similarly, there is a finite subset $\{ \neg\phi \} \cup \Delta_2$ of $\{ \neg\phi \} \cup \Gamma$ such that $\{ \neg\phi \} \cup \Delta_2$ is unsatisfiable. Let $\mathscr{I}$ be an interpretition. Since $\{ \phi \} \cup \Delta_1$ is unsatisfiable, if $\mathscr{I}$ models $\Delta_1$, then $\mathscr{I}$ models $\neg\phi$. Similarly, if $\mathscr{I}$ models $\Delta_2$, then $\mathscr{I}$ models $\phi$. So, if $\mathscr{I}$ models $\Delta_1 \cup \Delta_2$, then $\mathscr{I}$ models $\{ \phi, \neg\phi \}$. But $\{ \phi, \neg\phi \}$ is unsatisfiable, so $\Delta_1 \cup \Delta_2$ is unsatisfiable. Since both $\Delta_1$ and $\Delta_2$ are finite, so too is $\Delta_1 \cup \Delta_2$. Finally, $\Delta_1 \cup \Delta_2 \subset \Gamma$, so there is a finite, unsatisfiable subset of $\Gamma$. Therefore, $\Gamma$ is not compact.
+\end{proof}
+
+There are two important facts about maximally-compact sets of sentences. Let $\Gamma$ be such a set and $\phi$ and $\psi$ be any sentences. Thus:
+
+\begin{enumerate}
+	\item[(1)] $\phi \in \Gamma$ iff $\neg\phi \not\in \Gamma$, and
+	\item[(2)] $(\phi \land \psi) \in \Gamma$ iff both $\phi \in \Gamma$ and $\psi \in \Gamma$.
+\end{enumerate}
+
+Proof of (1): Left to right. Suppose for some $\phi$ that both $\phi \in \Gamma$ and $\neg\phi \in \Gamma$, but this implies $\{ \phi, \neg\phi \} \subset \Gamma$ which contradicts the hypothesis that $\Gamma$ is compact. So there there is no $\phi$ such that $\phi \in \Gamma$ and $\neg\phi \in \Gamma$. Right to left. Suppose neither $\phi \in \Gamma$ nor $\neg\phi \in \Gamma$. By Lemma \ref{lem:either-or-compact}, there is a set $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ which is compact, but this contradicts the hypothesis that $\Gamma$ is maximal. So for any $\phi$, $\phi \in \Gamma$ or $\neg\phi \in \Gamma$.
+
+Proof of (2): Left to Right. Suppose for some $\phi$ and $\psi$ that $(\phi \land \psi) \in \Gamma$ and $\phi \not\in \Gamma$. By (1), $\neg\phi \in \Gamma$, so $\{ (\phi \land \psi), \neg\phi \} \subset \Gamma$. But this contradicts the hypothesis that $\Gamma$ is compact, so $\phi \in \Gamma$. The arguments for $\psi \in \Gamma$ and the right to left implication follow analogously.
+
+For simplicity, I am only considering the language of propositional logic containing the logical operators `$\neg$' and `$\land$' along with sentence letters. Consider sentences containing `$\lor$', `$\rightarrow$', and `$\leftrightarrow$' to be rewritten in terms of `$\neg$' and `$\land$'. The results in this section can easily be extended to the wider language. 
+
+Following these considerations, I can move forward with the proof of the two principle lemmas of this section.
+
+\begin{lemma}
+	\label{lem:prop-maximal}
+	Any compact set of sentences is contained in a maximally compact set of sentences.
+\end{lemma}
+
+\begin{proof}
+	Consider an enumeration $E = \{ \phi_1, ..., \phi_n, ... \}$ of all propositional sentences of $\mathscr{L}$. The existence of such an enumeration is taken for granted\footnote{Consult Boolos and Jeffrey\cite{boolosjeffrey} for more details.}. Define a sequence of sets of sentences as follows:
+	
+	\begin{align*}
+	\Delta_0 &= \Gamma \\
+	\Delta_{n+1} &= \begin{cases}
+	\{ \phi_n \} \cup \Delta_n & \textnormal{if the union is compact} \\
+	\Delta_n & \textnormal{otherwise}
+	\end{cases}\\
+	\Delta &= \bigcup_{i=0}^\infty \Delta_i
+	\end{align*}
+	
+	It should be obvious that each $\Delta_i$ is compact by definition. Prove that $\Delta$ is also compact. Suppose the contrary. So there is a finite, unsatisfiable subset $\Sigma = \{ \psi_1, ..., \psi_m \}$ of $\Delta$. Suppose without loss of generality that the enumeration of $\Sigma$ corresponds with $E$. $\psi_m = \phi_n$ for some sentence of index $n$ in $E$, so $\Sigma\subset\Delta_n$. But $\Delta_n$ is compact by definition which contradicts the hypothesis that $\Sigma$ is unsatisfiable. So $\Delta$ is compact.
+	
+	Let $\phi$ be a sentences not included in $\Delta$. $\phi=\phi_i$ for some $i$ because the $E$ enumerates each sentences of the language. Since $\phi \not\in \Delta$, $\phi \not\in \Delta_i$. $\phi$ was not included by the procedure in stage $i$, so $\{ \phi \} \cup \Delta_i$ is not compact. So $\{ \phi \} \cup \Delta$ is not compact. Therefore, no compact set of sentences properly includes $\Delta$. In other words, $\Delta$ is maximally-compact.
+\end{proof}
+
+\begin{lemma}
+	\label{lem:prop-sat}
+	Any maximally compact set of sentences is satisfiable.
+\end{lemma}
+
+\begin{proof}
+	Let $\Delta$ be a maximally-compact set of propositional sentences. This proof follows in two parts. First, I define an interpretation $\mathscr{I}$ which models every atomic sentences of $\Delta$. Then, I prove that this interpretation models every sentence in $\Delta$. Let $\mathscr{I}$ be defined as follows. Let $\mathscr{I}$ associate the truth value $T$ with every sentence letter in $\Delta$, otherwise $F$.
+	
+	The second part of this proof follows by showing that the interpretation $\mathscr{I}$ as defined models every sentence of $\Delta$. I define the \textit{index} of a sentence to be the number of occurrences of `$\land$' and `$\neg$' in it.  The proof that $\mathscr{I}$ models a sentence $\phi$ iff $\phi$ is a member of $\Delta$ follows by induction over the index $i$ of $\phi$. For the base case, let $i=0$. Sentence letters are the only sentences of index 0. Let $\phi$ be an atomic sntence. By definite of the interpretation, $\mathscr{I}$ models $\phi$ iff $\phi \in \Delta$. Assume for induction that $\mathscr{i}$ models a sentence of index $i$ where $0 \leq i < k$ iff it is a member of $\Delta$. When $i=k$, show that $\mathscr{I}$ models a sentence of index $i$ iff it is a member of $\Delta$. Let $\phi$ be a sentence of index $i$. $\phi$ is one of the following cases: 
+	
+	\begin{enumerate}
+		\item $\phi = \neg\psi$. $\mathscr{I}$ models $\neg\psi$ iff $\mathscr{I}$ does not model $\psi$. $\mathscr{I}$ does not model $\psi$ iff $\psi \not\in \Delta$ by induction hypothesis because the index of $\psi$ is $i-1$. $\psi \not\in \Delta$ iff $\neg\psi \in \Delta$ by (1). Therefore, $\mathscr{I}$ models $\neg\psi$ iff $\neg\psi \in \Delta$.
+		\item $\phi = (\psi \land \chi)$. $\mathscr{I}$ models $(\psi \land \chi)$ iff $\mathscr{I}$ models both $\psi$ and $\chi$. $\mathscr{I}$ models both $\psi$ and $\chi$ iff $\{ \psi, \chi \} \subseteq \Delta$ by induction hypothesis because the indices of $\psi$ and $\chi$ are lower than $i$. $\{ \psi, \chi \} \subseteq \Delta$ iff $(\psi \land \chi) \in \Delta$ from (2). Therefore, $\mathscr{I}$ models $(\psi \land \chi)$ iff $(\psi \land \chi) \in \Delta$.
+	\end{enumerate}
+	
+	So for any sentence $\phi \in \Delta$, $\mathscr{I}$ models $\phi$. Therefore, $\Delta$ is satisfiable.
+\end{proof}
+
+Given the establishment of Lemmas \ref{lem:prop-maximal} and \ref{lem:prop-sat}, the compactness theorem follows immediately.
+
+\begin{theorem}{\text{(Compactness)}}
+	A set of propositional sentences is satisfiable iff every finite subset of it is satisfiable
+\end{theorem}
+
+\subsection{Propositional Completeness}
+
+I argue that there is a natural correspondence between compactness and the truth table test. And this correspondence gives reason to choose rule (T) as primitive in the system of deduction. There is an equivalent definition of the property `is compact' which regards truth table tests. A set of sentences is compact iff every truth table test from members of it is satisfiable. Thus the compactness theorem is equivalent to the implication `if a set of sentences is unsatisfiable, then there is an unsatisfiable truth table test from members of it'. For any unsatisfiable set of propositional sentences, a truth table test can demonstrate its unsatisfiability. Further, let $\Gamma$ be a set of propositional sentences and $\phi$ be any propositional sentence.
+
+\begin{enumerate}
+	\item[(3)] If $\Gamma \models \phi$, then it can be demonstrated by a truth table test.
+\end{enumerate}
+
+Proof of (3): Suppose $\Gamma \models \phi$, thus $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. By compactness, there exists a finite, unsatisfiable subset $\{ \neg\phi \} \cup \Sigma$ of $\{ \neg\phi \} \cup \Gamma$. Since $\{ \neg\phi \} \cup \Sigma$ is unsatisfiable, $\Sigma \models \phi$. And since $\Sigma$ is finite, this consequence can be demonstrated by a truth table test.
+
+This fact leads immediately to the completeness of the rules (P) and (T) in respect to propositional logic. The proof of completeness presented in this section is done in two parts. First, a procedure for constructing a derivation from any set of propositional sentences to a consequence of the set is defined. Second, the procedure is proved correct\footnote{The idea behind this procedure is found in Boolos and Jeffrey\cite{boolosjeffrey}}. Consider a set of sentences $\Gamma = \{ \phi_1, ..., \phi_n, ... \}$ and a sentence $\phi$ such that $\Gamma \models \phi$. The procedure follows in a series of stages where in a stage $i$ of the derivation: 
+
+\begin{enumerate}
+	\item Enter the sentence $\phi_i$ in the derivation as a premise with justification (P).
+	\item Perform a truth table test on the set of sentences $\Sigma$ entered in the derivation thus far to decide whether or not $\Sigma \models \phi$.
+	\item If $\Sigma \models \phi$, enter $\phi$ on a new line with justification (T).
+	\item Otherwise, continue to stage $i+1$.
+\end{enumerate}
+
+It should be noted that at the end of any stage $i$, only finitely many sentences have been entered. So the truth table test in step 2 can always be completed. Next, it is show that this procedure will always terminate in a finite number of stages.
+
+\begin{theorem}{Completeness}
+	If $\Gamma \models \phi$, then $\Gamma \vdash \phi$.
+\end{theorem}
+
+\begin{proof}
+	Let $\Gamma = \{ \phi_1, ..., \phi_n, ... \}$, and suppose $\Gamma \models \phi$. So, $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. By Compactness, there exists a finite, unsatisfiable subset $\{ \neg\phi \} \cup \Sigma$ of $\{ \neg\phi \} \cup \Gamma$. Since $\{ \neg\phi \} \cup \Sigma$ is unsatisfiable, any interpretation which models $\Sigma$ also models $\phi$, so $\Sigma \models \phi$.[Consider $\phi_m \in \Sigma$ where $m$ is the highest index of a sentence in $\Sigma$] At stage $m$, every sentence of sigma appears in the derivation, so the truth table test will decide $\phi$ as the consequence of the sentences currently entered in the derivation, and so, the derivation is completed with $\phi$ entered on the last line. Therefore, there exists a derivation from $\Gamma$ to $\phi$.
+\end{proof}
+
+\section{First-Order Compactness}
+
+\begin{lemma}
+	\label{lem:pred-maximal}
+	Any compact set of sentences is contained in a maximally-compact, $\omega$-complete set of sentences.
+\end{lemma}
+
+\begin{proof}
+	Consider an enumeration $E = \{ \phi_1, ..., \phi_n, ... \}$ of all sentences of $\mathscr{L}$ with the stipulation that if $\phi_i=(\exists \alpha)\psi$, then $\phi_{i+1}=\psi\alpha/\gamma$ where $\gamma$ is an augmented constant which appears in no sentence prior to $\phi_{i+1}$ in the enumeration. Again, the existence of such an enumeration is taken for granted. Define a sequence of sets of sentences as follows:
+	
+	\begin{align*}
+	\Delta_0 &= \Gamma \\
+	\Delta_{n+1} &= \begin{cases}
+	\{ \phi_n \} \cup \Delta_n & \textnormal{if the union is compact} \\
+	\Delta_n & \textnormal{otherwise}
+	\end{cases}\\
+	\Delta &= \bigcup_{i=0}^\infty \Delta_i
+	\end{align*}
+	
+	The proof that $\Delta$ is maximally-compact follows analogously to its proof in Lemma \ref{lem:prop-maximal}.
+	
+	
+\end{proof}
+
+\begin{lemma}
+	\label{lem:pred-sat}
+	Any maximally-compact, $\omega$-complete set of sentences is satisfiable.
+\end{lemma}
+
+\begin{proof}
+	Let $\Delta$ be a maximally-compact, $\omega$-complete set of sentences. This proof follows in two parts. First, I define an interpretation $\mathscr{I}$ which models the atomic sentences of $\Delta$. Then, I prove that this interpretation models every sentence in $\Delta$. Let $\mathscr{I}$ be defined as follows. The domain of $\mathscr{I}$ is the set of constants of $\mathscr{L}^a$, and let $\mathscr{I}$ associate the denotation of each constant with itself. Let $\mathscr{I}$ associate the truth-value T with every sentence letter in $\Delta$, otherwise F. Let $\mathscr{I}$ associate with each $n$-ary predicate letter $\phi$ the set of $n$-tuples $\{ \langle \beta_1, ..., \beta_n \rangle : \phi_{\beta_1 ... \beta_n} \in \Delta \}$.
+\end{proof}
+
+\begin{theorem}
+	A set of sentences is satisfiable iff every finite subset of it is satisfiable.
+\end{theorem}
+
+\begin{theorem}
+	Let $\Gamma$ be a finite, unsatisfiable, and $\omega$-complete set of sentences in prenix normal form. Then the quantifier free sentences of $\Gamma$ are unsatisfiable.
+\end{theorem}
+
+\begin{proof}
+	Suppose for proof by contrapositive that the quantifier-free sentences are satisfiable. Let $\mathscr{I}$ be such an interpretation. I define the \textit{length} of a sentence to be the number of quantifiers which appears in it. This proof proceeds by induction over the length of a sentence. The only sentences of length 0 are quantifier free, so the base case is true by hypothesis.
+\end{proof}
+
+\end{document}

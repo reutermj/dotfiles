@@ -1,0 +1,211 @@
+\title{Generalized Henkin Construction}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+G{\"o}del completed his landmark completeness proof of first-order logic in 1929, but it was impenetrable to all but a few mathematicians\cite{bezhanishvili}. It was not until nearly eighteen years later that this proof was simplified by Leon Henkin in his doctoral dissertation, and his method for doing so is the subject of this paper. While this method was first applied to the completeness theorem, it is an applicable technique to a wide range of theorems which have the form `any set of sentences with the property $\rule{.75cm}{0.15mm}$ is satisfiable'. Compactness is one such theorem. Further, this technique can specify the size of the domain of the interpretation which satisfies the set of sentences, so it can be applied to the proof of the L{\"o}wenheim-Skolem theorem. In this paper, I define a class of properties, and prove for any property in the class, a set of sentences with that property is satisfied by an interpretation with a denumerably infinite domain. Then I apply this generalized result to the proof of the Compactness and L{\"o}wenheim-Skolem theorems in section 3 and to the completeness theorem in section 4.
+
+In this paper, I will be considering the standard language $\mathscr{L}$ and semantics of first-order logic. For brevity, I refer to those definitions in Mates\cite{mates}. I will not be considering identity in this paper, but it is possible to extend this proof to include identity. Throughout this paper, I will be using the capital Greek letters $\Gamma$, $\Delta$, and $\Sigma$ with or without numerical subscripts to refer to sets of sentences. Likewise, $\phi$, $\psi$, and $\chi$ refer to sentences, $\alpha$ refers to variables, and $\beta$ and $\gamma$ refer to constants. $\phi\alpha/\beta$ will be used to refer to the sentences constructed by replacing all free occurrences of the variable $\alpha$ in $\phi$ with the constant $\beta$.
+
+\section{Henkin Construction}
+
+The goal of Henkin construction is to define an interpretation of any set of sentences with a certain type of property. I would like to keep the discussion in this section general, so rather than discuss a single property, I define a class of properties named $P$. In later sections, I discuss two properties in this class. I will only be considering sentences containing atomic formulae and the logical operators `$\neg$', `$\land$', and `$\exists$'. Consider sentences containing `$\lor$', `$\rightarrow$', `$\leftrightarrow$', and `$\forall$' to be rewritten in terms of `$\neg$', `$\land$', and `$\exists$'. For notational purposes, consider `$\Gamma$ has the property $P$' and `$\Gamma$ is $P$' to be shortcut for `$\Gamma$ has the property $Q$ where $Q$ is in $P$'.
+
+Not every property can be in class $P$. For example, the property \textit{is inconsistent} may not be in $P$ because there is no model of inconsistent sets of sentences. Thus, it would be a great failure of any procedure to build a model of an inconsistent set of sentences. I identify four conditions on properties in $P$. $\Gamma$ is a set of sentences with property $P$ iff
+
+\begin{enumerate}
+	\item[(1)] $\{ \phi, \neg\phi \} \not\subseteq \Gamma$,
+	\item[(2)] $\{ (\phi \land \psi) \} \cup \Gamma$ is $P$ iff both $\{ \phi \} \cup \Gamma$ and $\{ \psi \} \cup \Gamma$ are $P$,
+	\item[(3)] $\{ (\exists \alpha)\phi \} \cup \Gamma$ is $P$ iff $\{ \phi\alpha/\beta \} \cup \Gamma$ is $P$ for some constant $\beta$, and
+	\item[(4)] either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is $P$
+\end{enumerate}
+
+Intuitively, these conditions should be thought of creating larger $P$ sets by adding sentences. Conditions (1) and (4) assure that every sentence or its negation can be added to a $P$ set of sentences, but not both. Condition (2) states that if a conjunct could be added to a $P$ set of sentences, then so can both of the conjuncts, and vice versa. (**maybe this is better**)
+
+The first two conditions should be obvious. There is a consistency requirement, and the `$\land$' must behave correctly. The later two are less obvious. (3) relates to the witness property. A set of sentences has the witness property iff for any sentence $(\exists \alpha)\phi \in \Gamma$, there is a sentence $\phi\alpha/\beta \in \Gamma$ called the witness. The witness property plays a key role in the construction of an interpretation of $P$ sets of sentences. By constructing an interpretation which models the witnesses in a set of sentences, the interpretation must model the existential sentences in that very set.
+
+Condition (4) has to do with the concept of maximally-$P$ sets of sentences. A set of sentences $\Gamma$ is maximally-$P$ iff it has the property $P$ and there is no set of sentences $\Sigma$ with the property $P$ such that $\Sigma$ properly contains $\Gamma$. Specifically, (4) allows the construction of a maximally-$P$ set of sentences from a $P$ set of sentences. Intuitively, this conditions assures that a procedure could keep adding a sentence or its negation to a $P$ set of sentences until no new sentence can be added.
+
+I would like to observe some facts about $P$ and maximally-$P$ sets of sentences. First, let $\Gamma$ be a $P$ set of sentences. The following holds:
+
+\begin{enumerate}
+	\item[(5)] if $(\phi \land \psi) \in \Gamma$, then $\{ \neg\phi \} \cup \Gamma$ is not $P$, likewise for $\neg\psi$,
+	\item[(6)] if $\{ \phi, \psi \} \subseteq \Gamma$, then $\{ \neg(\phi \land \psi) \} \cup \Gamma$ is not $P$, and
+	\item[(7)] if $(\exists \alpha)\phi \in \Gamma$ and $\beta$ is a constant which appears in no sentence of $\Gamma$, then $\{ \phi\alpha/\beta \} \cup \Gamma$ is $P$.
+\end{enumerate}
+
+For (5), assume $(\phi \land \psi) \in \Gamma$, and for proof by contradiction, assume $\Gamma' = \{ \neg\phi \} \cup \Gamma$ is $P$. Since $(\phi \land \psi) \in \Gamma'$ and $\Gamma'$ is $P$, $\{ \phi \} \cup \Gamma'$ is $P$ by (2). But $\{ \phi, \neg\phi \} \subseteq \{ \phi \} \cup \Gamma'$, so $\{ \phi \} \cup \Gamma'$ is not $P$ by (1). Therefore $\Gamma'$ is not $P$. The proof of (6) follows analogously. The proof of (7) follows by demonstrating the conditions (1)-(4) apply to $\{ \phi\alpha/\beta \} \cup \Gamma$. Facts (5) and (6) assures us that Henkin construction will not ``accidentally" construct a contradictory set of sentences. Fact (7) assures us that a witness can be chosen for any existential sentence. 
+
+Further, the following properties of maximally-$P$ sets of sentences are easy to prove. Let $\Gamma$ be a maximally-$P$ set of sentences, then
+
+\begin{enumerate}
+	\item[(8)] $(\phi \land \psi) \in \Gamma$ iff $\{ \phi, \psi \} \subseteq \Gamma$,
+	\item[(9)] $\neg\phi \in \Gamma$ iff $\phi \not\in \Gamma$, and
+	\item[(10)] $(\exists \alpha)\phi \in \Gamma$ iff $\phi\alpha/\beta \in \Gamma$ for some constant $\beta$.
+\end{enumerate}
+
+So far in this discussion, there has been an unstated assumption about $P$ sets of a sentences, and I wish to now state it. I have been assuming that there are a denumerably infinite set of constants from the language $\mathscr{L}$ not appearing in the $P$ set of sentences. This is not always true for all sets of sentences of $\mathscr{L}$. Let $\beta_1, \beta_2, ..., \beta_n, ...$ be an enumeration of the constants of $\mathscr{L}$ and consider the set $\Gamma = \{ (\exists x)Px, \neg P_{\beta_1}, \neg P_{\beta_2}, ..., \neg P_{\beta_n}, ... \}$. If any constant $\beta_i$ of $\mathscr{L}$ were chosen as the witness for $(\exists x)Px$, then the set of sentences would be inconsistent. Henkin's solution to this problem was to augment the domain of $\mathscr{L}$ with a countably infinite set of constants. For the rest of this paper, $\mathscr{L}^a$ will be the language $\mathscr{L}$ augmented with a countably infinite set of constants $\gamma_1, \gamma_2, ..., \gamma_n, ...$. 
+
+It should be noted that there is a minor discrepancy between my definition of $P$ sets of sentences and Henkin's original approach. The set $\Gamma$ as defined in the last paragraph does not have the property $P$ because condition (3) is not met. Henkin would have considered this set of sentences to be consistent\footnote{In Mates, d-consistent or consistent with respect to derivability.}, but this discrepancy is not a problem. When there are a denumerably infinite set of constants not appearing in a set of sentences, then the definitions converge. For use in this paper, whether or not a set of sentences written in language $\mathscr{L}$ has the property $P$ will be evaluated in respect to $\mathscr{L}^a$.
+
+\subsection{Formal Definition}
+
+Given the discussion in the previous section, I formally define and prove Henkin construction. This technique is done in two parts. First, a principle lemma which reads `Any maximally-$P$ set of sentences is satisfied by an interpretation with a domain of size $\kappa$' is proved. For the purpose of this paper, $\kappa$ will always be $\aleph_0$, the cardinality of the natural numbers, but Henkin's technique can be extended to larger cardinals\cite{henkin_cardinals}. Second, a procedure for constructing a maximally-$P$ set of sentences from any set of sentences with the property $P$. First, I prove the principle lemma. Then I define and prove the correctness of Henkin's technique for producing maximally-$P$ sets of sentences.
+
+\begin{lemma}
+	Any maximally-$P$ set of sentences is satisfied by an interpretation with a denumerably infinite domain.
+\end{lemma}
+
+\begin{proof}
+	Let $\Delta$ be a maximally-$P$ set of sentences. This proof follows in two parts. First, I define an interpretation $\mathscr{I}$ which models the atomic sentences of $\Delta$. Then, I prove that this interpretation models every sentence in $\Delta$. Let $\mathscr{I}$ be defined as follows. The domain of $\mathscr{I}$ is the set of constants of $\mathscr{L}^a$, and let $\mathscr{I}$ associate the denotation of each constant with itself. Let $\mathscr{I}$ associate the truth-value T with every sentence letter in $\Delta$, otherwise F. Let $\mathscr{I}$ associate with each $n$-ary predicate letter $\phi$ the set of $n$-tuples $\{ \langle \beta_1, ..., \beta_n \rangle : \phi_{\beta_1 ... \beta_n} \in \Delta \}$.
+	
+	For the second part of this proof, I define the \textit{index} of a sentence to be the number of `$\neg$', `$\land$', and `$\exists$' occurring in it. The proof that $\mathscr{I}$ models every sentence in $\Delta$ follows by induction over the index $i$ of the sentences of $\Delta$. For the base case, let $i=0$. Atomic sentences are the only sentences of index 0. Let $\phi$ be an atomic sentence. By definition of the interpretation, $\mathscr{I}$ models $\phi$ iff $\phi \in \Delta$. Assume for induction that $\mathscr{I}$ models a sentence of index $i$ where $0 \leq i < k$ iff it is a member of $\Delta$. When $i=k$, show that $\mathscr{I}$ models a sentence of index $i$ iff it is a member of $\Delta$. Let $\phi$ be a sentence of index $i$. $\phi$ is one of the following cases:
+	
+	\begin{enumerate}
+		\item $\phi = (\psi \land \chi)$. $\mathscr{I}$ models $(\psi \land \chi)$ iff $\mathscr{I}$ models both $\psi$ and $\chi$. $\mathscr{I}$ models both $\psi$ and $\chi$ iff $\{ \psi, \chi \} \subseteq \Delta$ by induction hypothesis because the indices of $\psi$ and $\chi$ are lower than $i$. $\{ \psi, \chi \} \subseteq \Delta$ iff $(\psi \land \chi) \in \Delta$ from (8). Therefore, $\mathscr{I}$ models $(\psi \land \chi)$ iff $(\psi \land \chi) \in \Delta$.
+		\item $\phi = \neg\psi$. $\mathscr{I}$ models $\neg\psi$ iff $\mathscr{I}$ does not model $\psi$. $\mathscr{I}$ does not model $\psi$ iff $\psi \not\in \Delta$ by induction hypothesis because the index of $\psi$ is $i-1$. $\psi \not\in \Delta$ iff $\neg\psi \in \Delta$ by (9). Therefore, $\mathscr{I}$ models $\neg\psi$ iff $\neg\psi \in \Delta$.
+		\item $\phi = (\exists \alpha)\psi$. $\mathscr{I}$ models $(\exists \alpha)\psi$ iff $\mathscr{I}$ models $\psi\alpha/\beta$ for some constant $\beta$. $\mathscr{I}$ models $\psi\alpha/\beta$ for some constant $\beta$ iff $\psi\alpha/\beta \in \Delta$ by induction hypothesis because $\psi\alpha/\beta$ is of index $i-1$. $\psi\alpha/\beta \in \Delta$ iff $(\exists \alpha)\psi \in \Delta$ by (10). Therefore, $\mathscr{I}$ models $(\exists \alpha)\psi$ iff $(\exists \alpha)\psi \in \Delta$.
+	\end{enumerate}
+
+	In each case, $\mathscr{I}$ models $\phi$ iff $\phi \in \Delta$, so the lemma is proved.
+\end{proof}
+
+Now that we have obtained the principle lemma of maximally-$P$ sets of sentences, I can define Henkin's techniquqe for obtaining a maximally-$P$ set of sentences from any set of sentences with property $P$. Let $\phi_1, \phi_2, ..., \phi_n$ be an enumeration of the sentences of $\mathscr{L}^a$ with the stipulation that if $\phi_i = (\exists \alpha)\psi$, then $\phi_{i+1} = \psi\alpha/\gamma$ where $\gamma$ appears in no sentence prior to $\phi_{i+1}$ in the enumeration. For brevity, the existence of such an enumeration will be taken for granted and left unproven\footnote{Consult Boolos and Jeffery\cite{boolos_jeffery} for details.}. This stipulation on the enumeration is important because it assures that, for any existential sentence included in Henkin construction, there will always be a witness available to choose. Now I define an infinite sequence of sets of sentences $\Delta_0, \Delta_1, ..., \Delta_n, ...$ as follows:
+
+\begin{equation*} \label{eq1}
+\begin{split}
+\Delta_0 & = \Gamma \\
+\Delta_i & = 
+	\begin{cases}
+		\Delta_{i - 1} \cup \phi_i & \text{if this union has property } P \\
+		\Delta_{i - 1} & \text{otherwise} \\
+	\end{cases} \\
+\Delta & = \bigcup\limits_{i=0}^{\infty} \Delta_i
+\end{split}
+\end{equation*}
+
+It should be clear by the definition that each $\Delta_i$ is $P$.
+
+\begin{lemma}
+	$\Delta$ is maximally-$P$.
+\end{lemma}
+
+\begin{proof}
+	The goal of this proof is to demonstrate three facts about $\Delta$, and from those facts, it can be shown that $\Delta$ is maximally $P$. First, show for any sentence $\psi$, $\psi \in \Delta$ iff $\neg\psi \not\in \Delta$. Consider a sentence $\psi$ and its negation $\neg\psi$. Obviously these appear in the enumeration at indices $i$ and $j$. Choose $\phi_i$ to be whichever of $\psi$ or $\neg\psi$ comes earlier in the enumeration and $\phi_j$ to be the other. Suppose $\phi_i \in \Delta$, so $\phi_i$ was considered by the procedure and included. Since $j$ is a later index than $i$, $\phi_i \in \Delta_{j-1}$, so $\{ \phi_j \} \cup \Delta_{j-1}$ is not $P$ by condition (1). Since $\{ \phi_j \} \cup \Delta_{j-1}$ is not $P$, $\phi_j \not\in \Delta_j$ and further $\phi_j \not\in \Delta$. Suppose $\phi_i \not\in \Delta$. $\phi_i$ was considered by the procedure but not included, so $\{ \phi_i \} \cup \Delta_{i-1}$ is not $P$. $\Delta_{j-1}$ is $P$ by construction, so $\{ \phi_j \} \cup \Delta_{j-1}$ is $P$ by condition (4). Since $\{ \phi_j \} \cup \Delta_{j-1}$ is $P$, the procedure includes $\phi_j \in \Delta_j$ and further $\phi_j \in \Delta$. Therefore, $\psi \in \Delta$ iff $\neg\psi \not\in \Delta$ for any sentence $\psi$. As a consequence of this result, it should be easy to see that $\Delta$ meets conditions (1) and (4). 
+	
+	Next, show for any sentences $\psi$ and $\chi$, $(\psi \land \chi) \in \Delta$ iff both $\psi \in \Delta$ and $\chi \in \Delta$. Left to right. Consider a sentence $(\psi \land \chi) \in \Delta$, and suppose it appears in the enumeration at index $i$. Show that $\neg\psi \not\in \Delta$ and $\neg\chi \not\in \Delta$. First assume $\neg\psi \in \Delta$ and it appears in the enumeration at index $j$. Suppose $i < j$. Since $(\psi \land \chi) \in \Delta$, it was included by the procedure at step $i$, so $(\psi \land \chi) \in \Delta_{j-1}$. By (5), $\{ \neg\psi \} \cup \Delta_{j-1}$ is not $P$, but $\neg\psi \in \Delta$ so it was included at step $j$ which contradicts the construction. So $\neg\psi \not\in \Delta$. The argument follows analogously for $\neg\chi$. Therefore by the previous result, both $\psi \in \Delta$ and $\chi \in \Delta$.
+	
+	Right to left. Assume both $\psi \in \Delta$ and $\chi \in \Delta$, and suppose they appear at index $i$ and $j$ in the enumeration respectively. Assume $\neg(\psi \land \chi) \in \Delta$ and it appearins in the enumeration at index $k$. Assume $i < j < k$. Since both $\psi$ and $\chi$ are members of $\Delta$, they were included by the procedure, so $\{ \psi, \chi \} \subseteq \Delta_{k-1}$. By (6), $\{ \neg(\psi \land \chi) \} \cup \Delta_{k-1}$ is not $P$, so it was not included by the procedure which contradicts the hypothesis $\neg(\psi \land \chi) \in \Delta$. The argument for $j < i < k$ is analogous. Assume $i < k < j$, Since both $\psi$ and $\neg(\psi \land \chi)$ are members of $\Delta$, they were included by the procedure, so $\{ \psi, \neg(\psi \land \chi) \} \subseteq \Delta_{j-1}$. Since $\{ (\psi \land \chi) \} \cup \Delta_{j-1}$ is not $P$, either $\{ \psi \} \cup \Delta_{j-1}$ or $\{ \chi \} \cup \Delta_{j-1}$ is not $P$. $\psi \in \Delta_{j-1}$, so $\{ \psi \} \cup \Delta_{j-1}$ is $P$ and $\{ \chi \} \cup \Delta_{j-1}$ is not $P$. So the procedure does not include, but this contradicts the hypothesis $\chi \in \Delta$. The cases $j < k < i$, $k < i < j$, and $k < j < i$ follow analogously. So $\neg(\psi \land \chi) \not\in \Delta$, and by the earlier result, $(\psi \land \chi) \in \Delta$. Therefore, $(\psi \land \chi) \in \Delta$ iff both $\psi \in \Delta$ and $\chi \in \Delta$. From here, it should be easy to see that $\Delta$ meets condition (2).
+	
+	Lastly, show for any sentence $\psi$ and variable $\alpha$, $(\exists \alpha)\psi \in \Delta$ iff $\psi\alpha/\beta$ for some constant $\beta$. Left to right. Consider a sentence $(\exists \alpha)\psi \in \Delta$, and suppose it appears in the enumeration at index $i$. So $\phi_i = (\exists \alpha)\psi$, and by construction of the enumeration, $\phi_{i+1} = \psi\alpha/\gamma$ where $\gamma$ appears in no earlier sentence. By (7), $\{ \phi_{i+1} \} \cup \Delta_i$ is $P$, so the procedure includes $\phi_{i+1} \in \Delta_{i+1}$ and further $\phi_{i+1}\in \Delta$. 
+	
+	Right to left. Consider a sentence $\psi\alpha/\beta \in \Delta$ for some constant $\beta$. Show that $\neg(\exists \alpha)\psi \not\in \Delta$. These sentences appear in the enumeration at indices $i$ and $j$ respectively. Suppose $i < j$. Since $\psi\alpha/\beta \in \Delta$, it was included by the procedure at step i, so $\psi\alpha/\beta \in \Delta_{j-1}$. By (3), $\{ \neg(\exists \alpha)\psi \} \cup \Delta_{j-1}$ is not $P$, so $\neg(\exists \alpha)\psi \not\in \Delta_j$ and further $\neg(\exists \alpha)\psi \not\in \Delta$. Suppose $j<i$ and $\{ \neg(\exists \alpha)\psi \} \cup \Delta_{j-1}$ is $P$, so $\neg(\exists \alpha)\psi \in \Delta_{i-1}$. Since $\psi\alpha/\beta \in \Delta$, it was included by the procedure, so $\{ \psi\alpha/\beta \} \cup \Delta_{i-1}$ is $P$. But $\{ \psi\alpha/\beta \} \cup \Delta_{i-1}$ is $P$ iff $\{ (\exists \alpha)\psi \} \cup \Delta_{i-1}$ is $P$ by (3) which contradicts the fact that $\neg(\exists \alpha)\psi \in \Delta_{i-1}$. So $\{ \neg(\exists \alpha)\psi \} \cup \Delta_{j-1}$ is not $P$, and so $\neg(\exists \alpha)\psi$ was not included by the procedure. So if $\psi\alpha/\beta \in \Delta$, then $\neg(\exists \alpha)\psi \not\in \Delta$, and by the earlier result $(\exists \alpha)\psi \in \Delta$. Therefore $(\exists \alpha)\psi \in \Delta$ iff $\psi\alpha/\beta \in \Delta$ for some constant $\beta$. From here, it should be easy to see that $\Delta$ meets condition (3).
+	
+	Since $\Delta$ meets conditions (1)-(4) and every sentence or its negation is a member of $\Delta$, $\Delta$ is maximally-$P$.
+\end{proof}
+
+\begin{lemma}
+	\label{lem:sat-p}
+	If $\Gamma$ is a $P$ set of sentences, then $\Gamma$ is satisfied by an interpretation with a denumerably infinite domain.
+\end{lemma}
+
+\section{Compactness and L{\"o}wenheim-Skolem Theorems}
+
+In the previous section, I defined a class of properties $P$ and proved that for any property in $P$ and any set of sentences with such a property, there is a model of such a set of sentences. In this section, I demostrate that the property \textit{is compact} falls under $P$ where a set of sentences is compact iff every finite subset of it is satisfiable. The naming similarity between the property \textit{is compact} and the Compactness theorem is no coincidence. Once I prove that the compact property falls under $P$, then the Compactness theorem follows directly from lemma \ref{lem:sat-p}. As well, this method over proves the Compactness theorem. Henkin construction guarantees a model with a denumerably infinite domain, so this method is quite the two for one deal as the L{\"o}wenheim-Skolem theorem is proved simultaneously.
+
+\begin{lemma}
+	\label{lem:compact-is-p}
+	The property \textit{is compact} is in class $P$.
+\end{lemma}
+
+\begin{proof}
+	The proof of this lemma follows by demonstrating that the conditions (1)-(4) hold for any compact set of sentences. Assume $\Gamma$ is compact.
+	
+	1. Assume for contradiction $\{ \phi, \neg\phi \} \subseteq \Gamma$. Trivially, there is a finite subset of $\Gamma$ which is unsatisfiable, but contradicts the hypothesis that $\Gamma$ is compact. Therefore, $\{ \phi, \neg\phi \} \not\subseteq \Gamma$.
+	
+	2. Left to right. Assume $\{ (\phi \land \psi) \} \cup \Gamma$ is compact, and assume for proof by contradiction that there is a finite subset of $\{ \phi, \psi \} \cup \Gamma$ which is unsatisfiable. Let $\Delta$ be such a set. Consider $\Delta' = \Delta \setminus \{ \phi, \psi \}$. Obviously, $\Delta' \subseteq \Gamma$, so $\{ (\phi \land \psi) \} \cup \Delta' \subseteq \{ (\phi \land \psi) \} \cup \Gamma$. Since $\{ (\phi \land \psi) \} \cup \Gamma$ is compact by hypothesis, $\{ (\phi \land \psi) \} \cup \Delta'$ must be satisfiable. But $\{ (\phi \land \psi) \} \cup \Delta'$ is satisfiable iff $\{ \phi, \psi \} \cup \Delta'$ is satisfiable which contradicts the hypothesis that $\Delta$ is unsatisfiable. Right to left follows analogously.
+	
+	3. Left to right. Assume $\{ (\exists \alpha)\phi \} \cup \Gamma$ is compact, and assume for proof by contradiction that for any constant $\beta$ there is a finite subset of $\{ \phi\alpha/\beta \} \cup \Gamma$ that is unsatisfiable. Let $\Delta$ be such a set. Consider $\Delta' = \Delta \setminus \{ \phi\alpha/\beta \}$. Obviously, $\Delta' \subseteq \Gamma$, so $\{ (\exists \alpha)\phi \} \cup \Delta' \subseteq \{ (\exists \alpha)\phi \} \cup \Gamma$. Since $\{ (\exists \alpha)\phi \} \cup \Gamma$ is compact by hypothesis, $\{ (\exists \alpha)\phi \} \cup \Delta'$ is satisfiable, but $\{ (\exists \alpha)\phi \} \cup \Delta'$ is satisfiable iff there is a constant $\beta$ such that $\{ \phi\alpha/\beta \} \cup \Delta'$ is satisfiable which contradicts the hypothesis that $\Delta$ is unsatisfiable. Right to left follows analogously. (**maybe just say it follows analogously to 2**)
+	
+	4. Finally, assume for proof by contratrapositive that neither $\{ \phi \} \cup \Gamma$ nor $\{ \neg\phi \} \cup \Gamma$ are compact. By definition of compact, there is a finite subset $\Delta_1 \cup \{ \phi \}$ of $\Gamma \cup \{ \phi \}$ such that $\Delta_1 \cup \{ \phi \}$ is unsatisfiable, and similarly, there is a finite subset $\Delta_2 \cup \{ \neg\phi \}$ of $\Gamma \cup \{ \neg\phi \}$ such that $\Delta_2 \cup \{ \neg\phi \}$ is unsatisfiable. Let $\mathscr{I}$ be an interpretition. Since $\Delta_1 \cup \{ \phi \}$ is unsatisfiable, if $\mathscr{I}$ models $\Delta_1$, then $\mathscr{I}$ models $\neg\phi$. Similarly, if $\mathscr{I}$ models $\Delta_2$, then $\mathscr{I}$ models $\phi$. So, if $\mathscr{I}$ models $\Delta_1 \cup \Delta_2$, then $\mathscr{I}$ models $\{ \phi, \neg\phi \}$. But $\{ \phi, \neg\phi \}$ is unsatisfiable, so $\Delta_1 \cup \Delta_2$ is unsatisfiable. Since both $\Delta_1$ and $\Delta_2$ are finite, so too is $\Delta_1 \cup \Delta_2$. Finally, $\Delta_1 \cup \Delta_2 \subset \Gamma$, so there is a finite, unsatisfiable subset of $\Gamma$. Therefore, $\Gamma$ is not compact. Otherwise stated, if $\Gamma$ is compact, then either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is compact.
+\end{proof}
+
+\begin{theorem}[\text{Compactness}]
+	A set of sentences is satisfiable iff every finite subset of it is satisfiable.
+\end{theorem}
+
+\begin{theorem}[\text{L{\"o}wenheim-Skolem}]
+	If a set of sentences is satisfiable, then it is satisfied by an interpretation with a denumerably infinite domain.
+\end{theorem}
+
+\section{Completeness of First-Order Logic}
+
+This section will be dedicated to proving Henkin's original result. Henkin observed that the completeness of first-order logic follows immediately from a principle lemma which reads `If a set of sentences is unsatisfiable, then a contradiction can be derived from it'. This lemma requires the concept of a derivation, but fortunately only a very minimal concept of a derivation is required. A derivation from a set of sentences $\Gamma$ is a finite sequence of sentences $\phi_1, \phi_2, ..., \phi_n$ such that each sentence in this sequence is either a member of $\Gamma$ or can be derived from previous sentences using sound inferences\footnote{For definition of soundness see Mates ch. 9}. The last sentence of a derivation is called the conclusion. So the principle lemma can be restated as `If a set of sentences is unsatisfiable, then there exists a derivation from it to the conclusion $(P \land \neg P)$'.
+
+One way of proving this principle lemma is constructive. First, a sound rule set must be defined. Then a procedure is defined for constructing a derivation from any unsatisfiable set of sentences to the conclusion $(P \land \neg P)$ using those sound rules. Finally, the procedure must be proved correct. This approach was found in Boolos and Jeffrey\cite{boolosjeffrey}, but it was not Henkin's original technique. Henkin makes no reference to specific rules in his proof. He does this by proving the contrapositive of the principle lemma, `If there exists no derivation from a set of sentences to the conclusion $(P \land \neg P)$, then it is satisfiable'. 
+
+To prove this principle lemma, I define the property \text{is d-consistent} and prove it is in class $P$. A set of sentences $\Gamma$ is d-consistent (or consistent in respect to derivability) iff there exists no derivation from $\Gamma$ to the conclusion $(P \land \neg P)$. 
+
+\begin{lemma}
+	\label{lem:d-consistent_is_p}
+	The property is d-consistent is in class $P$.
+\end{lemma}
+
+\begin{proof}
+	Assume $\Gamma$ is d-consistent.
+	
+	1. Assume for proof by contradiction that $\{ \phi, \neg\phi \} \subseteq \Gamma$. But obviously there is a derivation from $\Gamma$ to $(P \land \neg P)$, specifically the derivation $\phi$, $\neg\phi$, $(P \land \neg P)$ where $(P \land \neg P)$ is inferred by the principle of explosion. Therefore $\{ \phi, \neg\phi \} \not\subseteq \Gamma$.
+	
+	2. Left to right. Assume $\{ (\phi \land \psi) \} \cup \Gamma$ is d-consistent, and assume for proof by contradiction that $\{ \phi, \psi \} \cup \Gamma$ is not d-consistent. So there is a derivation such that $\phi$, $\psi$, ..., $(P \land \neg P)$. Obviously there is a derivation from $\{ (\phi \land \psi) \} \cup \Gamma$ to both $\phi$ and $\psi$, so there is a derivation from $\{ (\phi \land \psi) \} \cup \Gamma$ to $(P \land \neg P)$ which contradicts the hypothesis that $\{ (\phi \land \psi) \} \cup \Gamma$ is d-consistent, so $\{ \phi, \psi \} \cup \Gamma$ is d-consistent. Right to left follows analogously. 
+	
+	3. Left to right. Assume $\{ (\exists \alpha)\phi \} \cup \Gamma$ is d-consistent. Assume for proof by contradiction that $\{ \phi\alpha/\beta \} \cup \Gamma$ is not d-consistent for every constant $\beta$. For $\beta$, choose a constant that appears neither in $\phi$ nor in any sentence of $\Gamma$. So there is a derivation from $\Gamma$ to $(\phi\alpha/\beta \rightarrow (P \land \neg P))$ by deduction theorem, and since the constant $\beta$ appears in no sentence of $\Gamma$, there is a derivation from $\Gamma$ to $(\forall \alpha)(\phi \rightarrow (P \land \neg P))$. But this would imply that there is a derivation from $\Gamma$ to $((\exists \alpha)\phi \rightarrow (P \land \neg P))$ which contradicts the hypothesis that $\{ (\exists \alpha)\phi \} \cup \Gamma$ is d-consistent. Right to left is trivial.
+	
+	4. Assume for proof by contradiction that neither $\{ \phi \} \cup \Gamma$ nor $\{ \neg\phi \} \cup \Gamma$ are d-consistent. Since there is a derivation from $\{ \phi \} \cup \Gamma$ to $(P \land \neg P)$, there is a derivation from $\Gamma$ to $(\phi \rightarrow (P \land \neg P))$ by deduction theorem. Further, this implies that there is a derivation from $\Gamma$ to $\neg\phi$. Similar reasoning would show that there is a derivation from $\Gamma$ to $\phi$ because $\{ \neg\phi \} \cup \Gamma$ is not d-consistent. But this would imply that there is a derivation from $\Gamma$ to both $\phi$ and $\neg\phi$. So there is a derivation from $\Gamma$ to $(P \land \neg P)$ using principle of explosion which contradicts the hypothesis that $\Gamma$ is d-consistent. So either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is d-consistent.
+\end{proof}
+
+\begin{lemma}
+	\label{lem:completeness-principle}
+	If a set of sentences $\Gamma$ is unsatisfiable, then there is a derivation from $\Gamma$ to $(P \land \neg P)$. 
+\end{lemma}
+
+\begin{proof}
+	Assume for proof by contrapositive that $\Gamma$ is d-consistent. By lemma \ref{lem:d-consistent_is_p}, I have shown that the property d-consistent is in class $P$, so by lemma \ref{lem:sat-p}, there is an interpretation which models every sentence in $\Gamma$. Therefore, $\Gamma$ is satisfiable.
+\end{proof}
+
+\begin{theorem}[Completeness]
+	If $\phi$ is the consequence of $\Gamma$, then there is a derivation from $\Gamma$ to $\phi$.
+\end{theorem}
+
+\begin{proof}
+	Assume $\phi$ is the consequence of $\Gamma$, so $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. By lemma \ref{lem:completeness-principle}, there is a derivation from $\{ \neg\phi \} \cup \Gamma$ to $(P \land \neg P)$. By deduction theorem, there is a derivation from $\Gamma$ to $(\neg\phi \rightarrow (P \land \neg P))$, and further, there is a derivation from $\Gamma$ to $\phi$.
+\end{proof}
+
+\end{document}

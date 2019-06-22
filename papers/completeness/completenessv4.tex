@@ -1,0 +1,175 @@
+\title{The Completeness of First Order Logic}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Logical investigations are centered around the concept of consequence. Consequence is a relation between premises and conclusionswhere the conclusions are said to follow from the premises. Premises and conclusions can be taken as the expressions of a language. I call these expressions \textit{sentences}. Although the concern of this paper is formal  languages, premises and conclusions can be taken as sentence of natural language. So consequence is not limited to the formal study of logic and can be extended to informal discussions. [The former are those asserted/claimed/accepted by an individual whereas the later are those which cannot be denied while remaining in accordance with consequence (**ehhh**).] One of the primary tasks of logical consequence is the evaluation of the soundness of an argument. An \textit{argument} is a finite sequence of sentences such that one, the \textit{conclusion}, is claimed to be the consequence premises. An argument is \textit{sound} if the conclusion is the consequence of the premises.
+
+It is useful to talk about arguments from a position. A \textit{position} is a (potentially infinite) set of sentences asserted by an individual. The key insight here is that arguments are concerned with finitely many sentences, but one can potentially assert infinitely many sentences in his or her position. An argument is from a position iff every premise of the argument is a member of the position. Logical consequence is also used in the analysis of a position. It is common to analyze the consequences of a position. If a logically incoherent, or unsatisfiable, sentence is the consequence of a position, then the position is called \textit{unsatisfiable}. In classical logic, these are contradictions. 
+
+This simply means that a contradiction is the consequence of the position. A goal of logic is to refute any unsatisfiable position, or to provide an argument from the position to a contradiction. This is frequently accomplished in both the mathematical and philosophical treatment of logic, and if this is always possible, then the logic is called \textit{complete} (**reword**).
+
+For first order logic, there is no effective procedure for deciding the satisfiability of a set of sentences, but there are some cases in which such a procedure exists. One such case is finite sets of propositional sentences. Ludwig Wittgenstein introduced the concept of a truth table test \textit{Tractatus Logico-Philosophicus}\cite{tractatus}. For brevity, familiarity with this procedure is assumed\footnote{A more detailed treatment can be found in Mates\cite{mates} chapter 6.}. Truth table tests can also decide the soundness of an inference from a finite set of propositional sentences to a propositional sentence. For this reason, the system of deduction used in this paper takes fundamental the truth table test. 
+
+A position is unsatisfiable iff it is not possible for every sentence in the position to be true. A position is unsatisfiable iff there is an argument from it to a contradiction.
+
+Consequence is at the heart of by the mathematical and philosophical study of logic. Both mathematicians and philosophers alike are interest in the evaluation of arguments. Specifically, they are concerned with the soundness of their arguments. Are the conclusions drawn in an argument the consequences of the premises. A sound system of deduction defines rules that, if followed correctly, will never draw conclusions which are not the consequences of their premises. A sound system of deduction will never draw the conclusion `all men are Socrates' from the position `all men are mortal and Socrates is a man'.
+
+There is another desirable property in a system of deduction. The rules ought to draw any conclusion which is the consequence of the premises. If possible, the system of deduction ought to be complete. There are two important facts about complete systems of deduction. First, a complete system of deduction can derive any sound inference from a position. This can be simple inferences such as deriving `the grass is wet' from the position `it is raining and if it is raining, then the grass is wet', but it also implies that more difficult, sound deductions can always be completed. For instance, '$\neg(\exists x)(\forall y)(y \neq x \rightarrow yRx)$' can be derived from the position `$(\forall x)\neg xRx \land (\forall x)(\exists y)xRy \land (\forall x)(\forall y)(xRy \rightarrow \neg yRx)$' using a complete system of deduction. The second important fact is that any incoherent position can be refuted using a complete system of deduction. 
+
+In this paper, I discuss a complete system of deduction for classical predicate logic. The focus of this paper is justifying the decisions that go into the creation of such a deductive system. I want to approach this discussion with the simplest problem first, the completeness of finite, propositional positions. Then I extend this discussions to the more complex cases by reducing these cases to finite, propositional positions. I start by defining a minimal concept of a derivative, and I intend to expand this concept over the course of this paper. I first consider the case of classical propositional logic. I introduce three rules and prove the ability to derive any consequence of any propositional position (** remember to define position**) using just these three rules. Then I expand the rule set to classical predicate logic. 
+
+
+A position is the set of sentences asserted by someone. To argue that their position is illogical/incoherent/contradictory is to show that not all of their assertions can be true at the same time. A refutation of a position is showing using logical reasoning that a contradiction can be deduced from it. A refutation of a position is to argue that a contradiction follows from their position.
+
+I need to make sure I talk about propositional positions here.
+
+\section{Propositional Logic}
+
+One of the first concepts taught to, and subsequently hated by, introductory logic students is the truth table test. This test was presented by Ludwig Wittgenstein in the \textit{Tractatus Logico-Philosophicus}\cite{tractatus}. There are two essential features of the truth table test used in this paper. First, the truth table test can effectively decide the satisfiability of finite, propositional positions. Second, it can effectively decide the soundness of an inference from a finite set of propositional sentences to a propositional conclusion.
+
+A truth table test is satisfiable iff there exists a combination of truth value assignments which marks true each sentence of the position.
+
+I treat finite, propositional positions as the most basic case. The development of the system of deduction presented in the paper carries out by reducing the more complicated cases to finite propositional positions. 
+
+This treatment leads to the introduction of the first two rules. The introduction of a premise (P) and truth table inference (T). The completeness theorem for 
+
+A formal derivation is intended to abstract all but the essential features of an argument to assess its validity. 
+
+The introduction of a premise must mark those sentences as special. These sentences are neither logical truths nor logical deduction. But to refute a position would not be all too successful if one used premises from outside the position to draw a conclusion. Sure intermediate premises are essential for a natural deduction proof. Mathematical arguments take true things to prove their absurdity all the time. These proof by contradictions are essential for the proof process. But the key to these extra premises is that they are ejected from the final conclusion. 
+
+There is a key observation that links the analysis of incoherent positions and sound inferences. A inference $\Gamma \vdash \phi$ is sound iff the position $\{ \neg\phi \} \cup \Gamma$ is incoherent. 
+
+\subsection{Compactness of Proposotional Logic}
+
+The compactness theorem for first-order logic was first published by G{\"o}del\cite{godelcompleteness} as a consequence of his completeness theorem, but the proof of the compactness theorem presented in this section follows Henkin's method for proving the completeness of first order logic\cite{hekincompleteness}. The important take away from the compactness theorem is that if a set of sentences is unsatisfiable, then some finite subset of it is unsatisfiable.
+
+A set of sentences \textit{is compact} iff all finite subsets of it are satisfiable. 
+
+\begin{lemma}
+	\label{lem:either-or-compact}
+	If $\Gamma$ is a compact set of sentences, then either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is compact.
+\end{lemma}
+
+\begin{proof}
+	Assume for proof by contrapositive that neither $\{ \phi \} \cup \Gamma$ nor $\{ \neg\phi \} \cup \Gamma$ are compact. By definition of compact, there is a finite subset $\{ \phi \} \cup \Delta_1$ of $\{ \phi \} \cup \Gamma $ such that $\{ \phi \} \cup \Delta_1$ is unsatisfiable, and similarly, there is a finite subset $\{ \neg\phi \} \cup \Delta_2$ of $\{ \neg\phi \} \cup \Gamma$ such that $\{ \neg\phi \} \cup \Delta_2$ is unsatisfiable. Let $\mathscr{I}$ be an interpretition. Since $\{ \phi \} \cup \Delta_1$ is unsatisfiable, if $\mathscr{I}$ models $\Delta_1$, then $\mathscr{I}$ models $\neg\phi$. Similarly, if $\mathscr{I}$ models $\Delta_2$, then $\mathscr{I}$ models $\phi$. So, if $\mathscr{I}$ models $\Delta_1 \cup \Delta_2$, then $\mathscr{I}$ models $\{ \phi, \neg\phi \}$. But $\{ \phi, \neg\phi \}$ is unsatisfiable, so $\Delta_1 \cup \Delta_2$ is unsatisfiable. Since both $\Delta_1$ and $\Delta_2$ are finite, so too is $\Delta_1 \cup \Delta_2$. Finally, $\Delta_1 \cup \Delta_2 \subset \Gamma$, so there is a finite, unsatisfiable subset of $\Gamma$. Therefore, $\Gamma$ is not compact.
+\end{proof}
+
+It should be noted that this definition is analogous with: a propositional position is coherent iff there is no unsatisfiable truth table test from members of the position. A set of sentences \textit{is maximally-compact} iff it is compact and is not properly contained in any compact set of sentences. From this definition, two important facts about a maximally-compact set of sentences $\Gamma$ can be drawn:
+
+\begin{enumerate}
+	\item[(1)] $\phi \in \Gamma$ iff $\neg\phi \not\in \Gamma$, and
+	\item[(2)] $(\phi \land \psi) \in \Gamma$ iff both $\phi \in \Gamma$ and $\psi \in \Gamma$.
+\end{enumerate}
+
+Proof of (1): Left to right. Suppose for some $\phi$ that both $\phi \in \Gamma$ and $\neg\phi \in \Gamma$, but this implies $\{ \phi, \neg\phi \} \subset \Gamma$ which contradicts the hypothesis that $\Gamma$ is compact. So there there is no $\phi$ such that $\phi \in \Gamma$ and $\neg\phi \in \Gamma$. Right to left. Suppose neither $\phi \in \Gamma$ nor $\neg\phi \in \Gamma$. By Lemma \ref{lem:either-or-compact}, there is a set $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ which is compact, but this contradicts the hypothesis that $\Gamma$ is maximal. So for any $\phi$, $\phi \in \Gamma$ or $\neg\phi \in \Gamma$.
+
+Proof of (2): Left to Right. Suppose for some $\phi$ and $\psi$ that $(\phi \land \psi) \in \Gamma$ and $\phi \not\in \Gamma$. By (1), $\neg\phi \in \Gamma$, so $\{ (\phi \land \psi), \neg\phi \} \subset \Gamma$. But this contradicts the hypothesis that $\Gamma$ is compact, so $\phi \in \Gamma$. The arguments for $\psi \in \Gamma$ and the right to left implication follow analogously.
+
+For simplicity, I am only considering the language of propositional logic containing the logical operators `$\neg$' and `$\land$' along with sentence letters. Consider sentences containing `$\lor$', `$\rightarrow$', and `$\leftrightarrow$' to be rewritten in terms of `$\neg$' and `$\land$'. This is an assumption for convenience as it does not impact the results when considering the wider language. 
+
+The proof technique used in the paper was first used by Henkin in his completeness theorem, and I will refer to it as \textit{Henkin Construction}. The proof of the compactness theorem follows by first showing that any compact set of sentences is contained in a maximally-compact set of sentences, then proving that any maximally compact set of sentences is satisfiable. From a high level, a compact set of sentences can be extended to a maximally-compact set of sentences by adding any every sentence of propositional logic or its negation to the set while preserving the property \textit{is compact}. The first step in this proof is to show that this is possible.
+
+
+
+\begin{lemma}
+	\label{lem:prop-maximal}
+	Any compact set of sentences is contained in a maximally compact set of sentences.
+\end{lemma}
+
+\begin{proof}
+	Consider an enumeration $E = \{ \phi_1, ..., \phi_n, ... \}$ of all propositional sentences of $\mathscr{L}$. The existence of such an enumeration is taken for granted\footnote{Consult Boolos and Jeffrey\cite{boolosjeffrey} for more details.}. Define a sequence of sets of sentences as follows:
+	
+	\begin{align*}
+		\Delta_0 &= \Gamma \\
+		\Delta_{n+1} &= \begin{cases}
+							\{ \phi_n \} \cup \Delta_n & \textnormal{if the union is compact} \\
+							\Delta_n & \textnormal{otherwise}
+						\end{cases}\\
+		\Delta &= \bigcup_{i=0}^\infty \Delta_i
+	\end{align*}
+	
+	It should be obvious that each $\Delta_i$ is compact by definition. Prove that $\Delta$ is also compact. Suppose the contrary. So there is a finite, unsatisfiable subset $\Sigma = \{ \psi_1, ..., \psi_m \}$ of $\Delta$. Suppose without loss of generality that the enumeration of $\Sigma$ corresponds with $E$. $\psi_m = \phi_n$ for some sentence at index $n$ in $E$, so $\Sigma\subset\Delta_n$. But $\Delta_n$ is compact by definition which contradicts the hypothesis that $\Sigma$ is unsatisfiable. So $\Delta$ is compact.
+	
+	Let $\phi$ be a sentences not included in $\Delta$. $\phi=\phi_i$ for some $i$ because the $E$ enumerates each sentences of the language. Since $\phi \not\in \Delta$, $\phi \not\in \Delta_i$. $\phi$ was not included by the procedure in stage $i$, so $\{ \phi \} \cup \Delta_i$ is not compact. So $\{ \phi \} \cup \Delta$ is not compact. Therefore, no compact set of sentences properly includes $\Delta$. In other words, $\Delta$ is maximally-compact.
+	
+	Next, it suffices to prove that $\phi \in \Delta$ iff $\neg\phi \not\in \Delta$ to show $\Delta$ is maximally compact. Let $\psi$ be whichever of $\phi$ or $\neg\phi$ appears first in $E$ and $\chi$ be the other, and let $i$ and $j$ be the indices at which $\psi$ and $\chi$ appear respectively. Suppose $\psi \in \Delta$. So $\{ \psi \} \cup \Delta_{i-1}$ is compact which implies that $\{ \chi \} \cup \Delta_{j-1}$ is not compact, so $\chi$ is not included in $\Delta_j$ by the procedure. Further, $\chi \not\in \Delta$. Suppose $\psi \not\in \Delta$. So $\{ \psi \} \cup \Delta_{i-1}$ is not compact. By Lemma \ref{lem:either-or-compact}, $\{ \chi \} \cup \Delta_{i-1}$ must be compact, which implies that $\{ \chi \} \cup \Delta_{j-1}$ is compact. So $\chi \in \Delta_j$ and further $\chi \in \Delta$. Therefore, $\phi \in \Delta$ iff $\neg\phi \not\in \Delta$, and so $\Delta$ is maximally compact.
+\end{proof}
+
+\begin{lemma}
+	\label{lem:prop-sat}
+	Any maximally compact set of sentences is satisfiable.
+\end{lemma}
+
+\begin{proof}
+	Let $\Delta$ be a maximally-compact set of propositional sentences. This proof follows in two parts. First, I define an interpretation $\mathscr{I}$ which models every atomic sentences of $\Delta$. Then, I prove that this interpretation models every sentence in $\Delta$. Let $\mathscr{I}$ be defined as follows. Let $\mathscr{I}$ associate the truth value $T$ with every sentence letter in $\Delta$, otherwise $F$.
+	
+	The second part of this proof follows by showing that the interpretation $\mathscr{I}$ as defined models every sentence of $\Delta$. I define the \textit{index} of a sentence to be the number of occurrences of `$\land$' and `$\neg$' in it.  The proof that $\mathscr{I}$ models a sentence $\phi$ iff $\phi$ is a member of $\Delta$ follows by induction over the index $i$ of $\phi$. For the base case, let $i=0$. Sentence letters are the only sentences of index 0. Let $\phi$ be an atomic sntence. By definite of the interpretation, $\mathscr{I}$ models $\phi$ iff $\phi \in \Delta$. Assume for induction that $\mathscr{i}$ models a sentence of index $i$ where $0 \leq i < k$ iff it is a member of $\Delta$. When $i=k$, show that $\mathscr{I}$ models a sentence of index $i$ iff it is a member of $\Delta$. Let $\phi$ be a sentence of index $i$. $\phi$ is one of the following cases: 
+	
+	\begin{enumerate}
+		\item $\phi = \neg\psi$. $\mathscr{I}$ models $\neg\psi$ iff $\mathscr{I}$ does not model $\psi$. $\mathscr{I}$ does not model $\psi$ iff $\psi \not\in \Delta$ by induction hypothesis because the index of $\psi$ is $i-1$. $\psi \not\in \Delta$ iff $\neg\psi \in \Delta$ by (1). Therefore, $\mathscr{I}$ models $\neg\psi$ iff $\neg\psi \in \Delta$.
+		\item $\phi = (\psi \land \chi)$. $\mathscr{I}$ models $(\psi \land \chi)$ iff $\mathscr{I}$ models both $\psi$ and $\chi$. $\mathscr{I}$ models both $\psi$ and $\chi$ iff $\{ \psi, \chi \} \subseteq \Delta$ by induction hypothesis because the indices of $\psi$ and $\chi$ are lower than $i$. $\{ \psi, \chi \} \subseteq \Delta$ iff $(\psi \land \chi) \in \Delta$ from (2). Therefore, $\mathscr{I}$ models $(\psi \land \chi)$ iff $(\psi \land \chi) \in \Delta$.
+	\end{enumerate}
+
+	So for any sentence $\phi \in \Delta$, $\mathscr{I}$ models $\phi$. Therefore, $\Delta$ is satisfiable.
+\end{proof}
+
+Given the establishment of Lemmas \ref{lem:prop-maximal} and \ref{lem:prop-sat}, the compactness theorem follows immediately.
+
+\begin{theorem}{\text{(Compactness)}}
+	A set of propositional sentences is satisfiable iff every finite subset of it is satisfiable
+\end{theorem}
+
+There is a correspondence between the compactness theorem of propositional logic and the truth table test. A set of sentences is compact iff there is no unsatisfiable truth table test from members of it. So the compactness theorem can be restated as: If a set of propositional sentences is unsatisfiable, then there is an unsatisfiable truth table test from members of it.
+
+\subsection{Completeness of Propositional Logic}
+
+The completeness of the rules (P) and (T) follows quickly from the Compactness theorem. To prove this, I first define a procedure which, if applied correctly, will construct a derivation from any set of sentences to any consequence of it Then, I prove the correctness of this procedure\footnote{The idea behind this procedure is found in Boolos and Jeffrey\cite{boolosjeffrey}}. Consider a set of sentences $\Gamma = \{ \phi_1, ..., \phi_n, ... \}$ and a sentence $\phi$ such that $\Gamma \models \phi$. The procedure follows in a series of stages where in a stage $i$ of the derivation: 
+
+\begin{enumerate}
+	\item Enter the sentence $\phi_i$ in the derivation as a premise with justification (P).
+	\item Perform a truth table test on the set of sentences $\Sigma$ entered in the derivation thus far to decide whether or not $\Sigma \models \phi$.
+	\item If $\Sigma \models \phi$, enter $\phi$ on a new line with justification (T).
+	\item Otherwise, continue to stage $i+1$.
+\end{enumerate}
+
+It should be noted that at the end of any stage $i$, only finitely many sentences have been entered. So the truth table test in step 2 can always be completed. Next, it is show that this procedure will always terminate in a finite number of stages.
+
+\begin{theorem}{Completeness}
+	If $\Gamma \models \phi$, then $\Gamma \vdash \phi$.
+\end{theorem}
+
+\begin{proof}
+	Let $\Gamma = \{ \phi_1, ..., \phi_n, ... \}$, and suppose $\Gamma \models \phi$. So, $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. By Compactness, there exists a finite, unsatisfiable subset $\{ \neg\phi \} \cup \Sigma$ of $\{ \neg\phi \} \cup \Gamma$. Since $\{ \neg\phi \} \cup \Sigma$ is unsatisfiable, any interpretation which models $\Sigma$ also models $\phi$, so $\Sigma \models \phi$.[Consider $\phi_m \in \Sigma$ where $m$ is the highest index of a sentence in $\Sigma$] At stage $m$, every sentence of sigma appears in the derivation, so the truth table test will decide $\phi$ as the consequence of the sentences currently entered in the derivation, and so, the derivation is completed with $\phi$ entered on the last line. Therefore, there exists a derivation from $\Gamma$ to $\phi$.
+\end{proof}
+
+\end{document}

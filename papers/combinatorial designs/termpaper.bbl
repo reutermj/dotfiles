@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{boolosjeffrey}
+G.~Boolos and R.~Jeffrey.
+\newblock {\em Computability and Logic}.
+\newblock Cambridge University Press, Cambridge, UK, 3rd edition, 1974.
+
+\bibitem{colbourn}
+C.~Colbourn.
+\newblock The complexity of completing parital latin squares.
+\newblock {\em Discrete Applied Mathematics}, 8:25--30, 1984.
+
+\bibitem{cormenetal}
+T.~Cormen, C.~Leiserson, R.~Rivest, and C.~Stein.
+\newblock {\em Introduction to Algorithms}.
+\newblock The MIT Press, Cambridge, Massachusetts, 3rd edition, 2009.
+
+\bibitem{hoyler}
+I.~Holyer.
+\newblock The np-completeness of some edge-partition problems,.
+\newblock {\em SIAM J. Computing}, 10:713--717, 1981.
+
+\bibitem{hopcroft-karp}
+J.E. Hopcroft and R.M. Karp.
+\newblock An $n^{5/2}$ algorithm for maximum matching in bipartite graphs.
+\newblock {\em SIAM J. Computing}, 2:225--231, 1973.
+
+\end{thebibliography}

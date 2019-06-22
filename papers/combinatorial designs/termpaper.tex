@@ -1,0 +1,124 @@
+\title{NP-Completeness of Completing Partial Latin Squares}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The Completion problem of partial Latin squares, further referred to as the Completion problem, concerns the computational complexity of deciding if a partial Latin square can be completed into a Latin square. That is, compared to the side length of a partial Latin square, how long will it take in general for an algorithm to decide whether or not it can be completed into a Latin square.
+
+An \textit{algorithm} is a well-defined procedure that takes an input and produces an output\cite{cormenetal}. A more formal notion of an algorithm makes use of some model of computation such as a Turing Machine, but this notation is rarely appealed to when arguing the complexity of an algorithm. The informal notion is more than sufficient. This paper is concerned with a class of problems called decision problems. A \textit{decision problem} for a property $P$ is a positive or negative attribution of $P$ to any object in the domain. A decision problem for a property $P$ is \textit{solvable} iff there exists an algorithm which correctly classifies any object in the domain as a positive or negative instance of $P$\cite{boolosjeffrey}.
+
+Further, solvable decision problems can be classified based on their \textit{complexity}, or the number of elementary operations required by an algorithm to correctly classify an object in the domain. The complexity of a decision problem is related asymptotically to the ``size" $n$ of the object. A decision problem is in class P iff there exists an algorithm which solves it for any object in the domain in at most $O(n^p)$ elementary operations for some $p$ where $n$ is the size of the object, otherwise known as a P-time algorithm. A decision problem is in class NP iff there exists a P-time algorithm for verifying a correct solution to the problem. There is a specific class of problems in class NP which constitutes the ``hardest'' problems in this class. These are the NP-complete problems. The definition of these problems requires the concept of a P-time reduction. A problem A is \textit{P-time reducible} to a problem Q iff a transformation from A to B can be executed by a polynomial time algorithm. A decision problem is NP-complete if it is in class NP and every other problem in NP is P-time reducible to it. 
+
+The method for proving that a decision problem is NP-complete is done in two parts. First, demonstrate that the problem is in class NP. Second, prove that there exists a P-time reduction from any other NP-complete problem to it. In this paper, I demonstrate that the Completion problem is P-time reducible to and from the Triangle Decomposition problem of tripartite graphs. 
+
+%To prove the Completion of Partial Latin Squares is NP-complete, Colbourn\cite{colbourn} proves that there exists a P-time reduction to and from the Triangle Partition of Tripartite graphs problem.
+
+\section{The Completion Problem is in NP}
+
+The first step of this proof is to demonstrate that the Completion Problem is in class NP. This is done by providing a P-time reduction of this problem to a known NP-complete problem. Colbourn\cite{colbourn} reduces the Completion Problem to the Triangle Decomposition problem of tripartite graphs. A graph $G=(V,E)$ is \textit{tripartite} iff $V$ can be partitioned into three independent sets. A \textit{triangle decomposition} of a graph $G=(V,E)$ is a decomposition of $E$ into disjoint subsets each of which induce a triangle ($K_3$) in $G$. The Triangle Decomposition problem was proved NP-complete in the same paper, but it is a minor modification to the method presented by Hoyler\cite{hoyler}.
+
+\begin{theorem}{\textnormal{(Colbourn\cite{colbourn})}}
+	Deciding whether a tripartite graph has a triangle decomposition is NP-complete.
+\end{theorem}
+
+Colbourn's method constructs a tripartite graph from any partial Latin square and proves that the constructed graph has a triangle decomposition iff the partial Latin square can be completed. This method introduces the concept of a defect graph. For any partial Latin square $L$ of order $n$, the \textit{defect graph}, $D(L)$ is defined as follows:
+ 
+\begin{align*}
+	V(D(L)) = &\{ r_i : \textnormal{row } i \textnormal{ contains an empty square} \} \; \cup \\
+ &\{ c_j : \textnormal{column } j \textnormal{ contains an empty square} \} \; \cup \\
+ &\{ e_k : \textnormal{symbol } k \textnormal{ appears in fewer than } n \textnormal{ squares} \}
+\end{align*}
+
+This arbitrary naming of these vertices is maintained for the rest of this section.
+
+\begin{align*}
+	E(D(L)) = &\{ (r_i, c_j) : \textnormal{the square } (i, j) \textnormal{ is empty} \} \; \cup \\
+	&\{ (r_i, e_k) : \textnormal{row } i \textnormal{ does not contain the symbol } k \} \; \cup \\
+	&\{ (c_j, e_k) : \textnormal{column } j \textnormal{ does not contain the symbol } k \}
+\end{align*}
+
+It should be obvious that $D(L)$ is tripartite, and the construction of the defect graph of any partial Latin square is P-time. The reduction is thus completed by proving the following lemma.
+
+\begin{lemma}
+	\label{lem:defect}
+	A partial Latin square $L$ can be completed iff its defect graph $D(L)$ has a triangle decomposition.
+\end{lemma}
+
+\begin{proof}
+	Left to right. Suppose $L$ can be completed, and let $LS$ be such a Latin square. Consider the empty squares $(i_1, j_1), ..., (i_m, j_m)$ in $L$ and the symbols $k_1, ..., k_m$ which appears at the respective squares in $LS$. Define the decompositions $E_p = \{ (r_{i_p}, c_{j_p}), (r_{i_p}, e_{k_p}), (c_{j_p}, e_{k_p}) \}$ for each $1 \leq p \leq m$ where $r_{i_p}=r_{i_q}$ iff rows $i_p$ and $i_q$ are the same, $c_{j_p}=c_{j_q}$ iff columns $j_p$ and $j_q$ are the same, and $e_{k_p}=e_{k_q}$ iff symbols $k_p$ and $k_q$ are the same. Each of these decompositions induce a triangle in $D(L)$. Show no two distinct decompositions $E_p$ and $E_q$ intersect. $(r_{i_p}, c_{j_p}) \neq (r_{i_q}, c_{j_q})$ because $(i_p, j_p)$ and $(i_q, j_q)$ are distinct squares. $(r_{i_p}, e_{k_p}) \neq (r_{i_q}, e_{k_q})$ because the contrary would require the same symbol appearing twice in the same row of the completed Latin square. The same arguments shows $(c_{j_p}, e_{k_p}) \neq (c_{j_q}, e_{k_q})$. So no two distinct decompositions intersect. Therefore $D(L)$ has a triangle decomposition. 
+	
+	Right to left. Suppose $D(L)$ has a triangle decomposition, and let $E_1, ..., E_m$ be such a decomposition where each $E_p=\{ (r_{i}, c_{j}), (r_{i}, e_{k}), (c_{j}, e_{k}) \}$. Define a Latin square $LS$ as follows. If a square $(i, j)$ in $L$ is filled with the symbol $k$, then $k$ appears at $(i, j)$ in $LS$. But if a square $(i, j)$ is empty in $L$, then $(i, j)$ is identical to $(i_p, j_q)$ for some $p$ and $q$. The pair $(r_{i_p}, c_{j_q})$ appears in only one decomposition $E_r$, so choose the third vertex $e_k$ in the triangle induced by $E_r$. Fill the square $(i,j)$ in $LS$ with the symbol $k$. Show $LS$ is a Latin square. Each square is filled with some symbol. The same symbol $k$ does not appear in two squares of the same row $i$ for suppose the contrary. The pair $(r_i, e_k)$ would appear in two decompositions which contradicts the hypothesis that the decompositions are disjoint. The same argument shows that the symbol $k$ does not appear in two squares of the same column $j$.
+\end{proof}
+
+With lemma \ref{lem:defect} obtained, the Completion problem is reduced to the triangle decomposition problem. Therefore, the Completion problem is in NP.
+
+\section{The Completion Problem is NP-complete}
+
+It should be noted that the two way proof of lemma \ref{lem:defect} was unnecessary. Only the proof of the left to right conditional is required to show that the Completion problem is in NP. Colbourn\cite{colbourn} uses the right to left conditional to reduce the Triangle Decomposition problem to the Completion problem. This reduction makes use the uniformity of tripartite graphs. A tripartite graph is \textit{uniform} iff a vertex has an equal number of neighbors in the other two partitions. It should be noted that if a tripartite graph has a triangle decomposition, then it is uniform. In this section, I present a simpler proof of Colbourn's method reducing the Triangle Decomposition problem to the Completion problem.
+
+The method I present shares a similar structure to Colbourn's proof. From any uniform, tripartite graph $G$, a partial Latin square is produced in P-time, and this square is produced such that $G$ is a defect graph of it. Our approaches differ in the construction of these partial Latin squares. Let $G=(V_1 \cup V_2 \cup V_3, E)$ be a uniform, tripartite graph of order $n$ where $V_1 = \{ r_1, ..., r_x \}$, $V_2 = \{ c_1, ..., c_y \}$, and $V_3 = \{ e_1, ..., e_z \}$. For abuse of notation, assume the terms $r_{x+1}, ..., r_n$, $c_{y+1}, ..., c_n$, and $e_{z+1}, ..., e_n$ are defined. This naming is maintained for the rest of this section. Let $LF(G)$ be a $n \times n$ array of the symbols $\{ 1, ..., 2n \}$ defined as follows:
+
+\begin{enumerate}
+	\item For each $i,j \in \{1, ..., n\}$, if $r_i \in V_1$ and $c_j \in V_2$ and $(r_i, c_j) \in E$, then the square $(i, j)$ of $LF(G)$ is empty.
+	\item Otherwise, the square $(i, j)$ of $LF(G)$ contains the symbol $1 + n + ((i + j) \textnormal{ mod } n)$.
+\end{enumerate}
+
+Next, I demonstrate that $LF(G)$ can be extended to a $n \times 2n$ partial Latin rectangle $LR(G)$ where a square in $LR(G)$ is empty iff the same square is empty in $LF(G)$. This construction relies on the following lemma from the textbook.
+
+\begin{lemma}
+If a design $\mathscr{D}$ has a SDR, each of the $b$ blocks has at least $t$ elements, and $t \leq b$---Then $\mathscr{D}$ has at least $t!$ SDRs.
+\end{lemma}
+
+\begin{lemma}
+	\label{lem:construction}
+	Let $G=(V, E)$ be a uniform, tripartite graph of order $n$. $LF(G)$ as defined above can be extended to a partial Latin square, $LS(G)$, of side $2n$ where a square in $LS(G)$ is empty iff the same square is empty in $LF(G)$.
+\end{lemma}
+
+\begin{proof}
+	Let $S_i = \{ k : k \textnormal{ does not appear in row } i \textnormal{ and } (r_i, e_k) \not\in E \}$ for each $1 \leq i \leq n$. Let $\sigma$ be the number of empty squares in row $i$ of $LF(G)$. By definition of $LF(G)$ there must be $\sigma$ pairs $(r_i, c_j) \in E$. Since $G$ is uniform, there are $\sigma$ pairs $(r_i, e_k) \in E$. Further, this implies that there are $n-\sigma$ pairs $(r_i, e_k) \not\in E$. Therefore, $|S_i|=n-\sigma+\sigma=n$ for each $1 \leq i \leq n$. So there is a SDR of $S_1, ..., S_n$. Further each block has at least $n$ elements, so there are $n!$ SDRs of $S_1, ..., S_n$. Append $n$ such SDRs to $LF(G)$ as columns to obtain the partial Latin rectangle $LR(G)$, and since the empty squares of $LF(G)$ where not filled and no new empty squares were created in construction of $LR(G)$, a square in $LR(G)$ is empty iff the same square is empty in $LF(G)$.
+	
+	An analogous argument can extend $LR(G)$ to a partial Latin square of side $2n$ where a square in $LS(G)$ is empty iff the same square is empty in $LF(G)$.
+\end{proof}
+
+The proof that the Completion problem is NP-complete follows directly from lemmas \ref{lem:defect} and \ref{lem:construction}.
+
+\begin{theorem}
+	The Completion problem is NP-complete.
+\end{theorem}
+
+\begin{proof}
+	The Completion problem is in NP as a direct result of lemma \ref{lem:defect}. So all that is left is to show that the Triangle Decomposition problem is P-time reducible to the Completion problem. First, suppose a tripartite graph $G$ is not uniform, then there is no triangle decomposition. Second, suppose a tripartite graph of order $n$ is uniform. The construction of $LF(G)$ is obviously P-time. The construction of a partial Latin square, $LS(G)$, of side $2n$ from $LF(G)$ stated in lemma \ref{lem:construction} can be performed by successive iterations of the Hopcroft-Karp\cite{hopcroft-karp} algorithm in P-time. So, the construction of $LS(G)$ from $G$ is done in P-time. Finally, it should be observed that $G$ is the defect graph of $LS(G)$, and by lemma \ref{lem:defect}, $G$ has a triangle decomposition iff $LS(G)$ can be completed. This finishes the reduction of the Triangle Decomposition problem to the Completion problem. Therefore, the Completion problem is NP-complete.
+\end{proof}
+
+\bibliographystyle{plain}
+\bibliography{termpaper}
+
+\end{document}

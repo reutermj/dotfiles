@@ -1,0 +1,216 @@
+\title{The Completeness of First Order Logic}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tabularx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Logical investigations are centered around the concept of consequence. Consequence is a relation between sentences of a language which expresses an account of what sentences follow from what sentences\cite{restallbeall}. I use the notation $\Gamma \models \phi$ to be read `$\phi$ is the consequence the set of sentences $\Gamma$'. A set of sentences is said to be \textit{satisfiable} iff a contradiction is not the consequence of it.
+
+One of the primary tasks of logical consequence is in the evaluation of an argument. An \textit{argument} is a finite sequence of sentences such that on, the \textit{conclusion}, is claimed to be the consequence of the others, the \textit{premises}. Logical consequence is used to evaluate the soundness of an argument. An argument is said to be \textit{sound} if the conclusion is the consequence of the premises. There is a discrepancy between logical consequence and an argument. A sentence can be the consequence of infinitely many sentences, but arguments concern finitely many premises in support of a conclusion.
+
+The concept of logical consequence is often compared and contrasted with the concept of a formal derivation. A formal derivation can be thought of an abstraction of an argument. A formal derivation abstracts away the semantic content of an argument leaving only the form. Formal derivations are constructed in respect to some system of logic. These systems are some combination of primitive axioms and rules of inference. Hilbert systems tend to have many axioms and few rules, whereas systems of natural deduction tend to focus more on rule with few, if any, axioms. This paper is concerned with a system of natural deduction for constructing derivations.
+
+It will be helpful to establish some terminology related to formal derivations. A \textit{derivation} is a finite sequence of sentences where each sentence either a \textit{premise} or is derived from previous sentences by means of a rule. The last sentence of a derivation is called the \textit{conclusion}. I use the notation $\Gamma \vdash \phi$ to be read `there exists a derivation from $\Gamma$ to $\phi$. A deductive system is often compared against a consequence relation. If a deductive system can only derive conclusions which are the consequences of their premises, then the system is called \textit{sound}. And if a deductive system can derive any conclusion which is the consequence of its premises, then the system is called \textit{complete}.
+
+In this paper, I present a system of natural deduction for first-order logic. Familiarity with the language and semantics of first-order logic is assumed. The system I present is both sound and complete. The former is unproved in this paper, but this deductive system is nearly identical to that found in Mates\cite{mates}. I present a different proof of the completeness theorem in this paper than the one found in Mates. The completeness proof of this paper is done to make more clear the decisions which go into creating a complete set of rules.
+
+The goal of this paper is to make clear the choices which go into constructing a sound and complete deductive system for first-order logic. There is a fairly simple procedure for testing whether or not a rule is sound, but completeness of a deductive system poses a more challenging problem. I argue that there are two important theorems regarding the semantics of first-order logic which guide the creation of a complete set of rules. From considerations based on these two theorems, I present a set of rules for first-order logic and prove their completeness.
+
+
+\section{The Compactness Theorem}
+
+The proof of completeness in this paper follows from a very specific way of proving the compactness theorem of first-order logic. For simplicity, I am only considering sentences in prenix normal form. This has no impact on the outcome of this proof because an equivalent sentence in normal form can be derived from any sentence. As well, I am only considering sentences of first-order logic containing the connectives `$\land$' and `$\neg$' and the quantifiers `$\forall$' and `$\exists$'. Consider any sentences containing `$\lor$', `$\rightarrow$', and `$\leftrightarrow$' to be rewritten in terms of the others.
+
+The compactness theorem states: If set of sentences is unsatisfiable, then a finite subset of it is unsatisfiable. The proof of the compactness theorem in this paper follows similarly to Leon Henkin's completeness proof of first-order logic\cite{henkin}. To simplify this discussion, a set of sentences is said to be \textit{compact} iff every finite subset of it is satisfiable. The proof of the compactness theorem presented in this paper follows by demonstrating that if a set of sentences is compact, the it is satisfiable. (**how do I introduce this lemma**)
+
+\begin{lemma}
+	\label{lem:either-or-compact}
+	If $\Gamma$ is a compact set of sentences and $\phi$ is any sentence, then either $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ is compact.
+\end{lemma}
+
+\begin{proof}
+	Assume for proof by contrapositive that neither $\{ \phi \} \cup \Gamma$ nor $\{ \neg\phi \} \cup \Gamma$ are compact. By definition of compact, there is a finite subset $\{ \phi \} \cup \Delta_1$ of $\{ \phi \} \cup \Gamma $ such that $\{ \phi \} \cup \Delta_1$ is unsatisfiable, and similarly, there is a finite subset $\{ \neg\phi \} \cup \Delta_2$ of $\{ \neg\phi \} \cup \Gamma$ such that $\{ \neg\phi \} \cup \Delta_2$ is unsatisfiable. Let $\mathscr{I}$ be an interpretition. Since $\{ \phi \} \cup \Delta_1$ is unsatisfiable, if $\mathscr{I}$ models $\Delta_1$, then $\mathscr{I}$ models $\neg\phi$. Similarly, if $\mathscr{I}$ models $\Delta_2$, then $\mathscr{I}$ models $\phi$. So, if $\mathscr{I}$ models $\Delta_1 \cup \Delta_2$, then $\mathscr{I}$ models $\{ \phi, \neg\phi \}$. But $\{ \phi, \neg\phi \}$ is unsatisfiable, so $\Delta_1 \cup \Delta_2$ is unsatisfiable. Since both $\Delta_1$ and $\Delta_2$ are finite, so too is $\Delta_1 \cup \Delta_2$. Finally, $\Delta_1 \cup \Delta_2 \subset \Gamma$, so there is a finite, unsatisfiable subset of $\Gamma$. Therefore, $\Gamma$ is not compact.
+\end{proof}
+
+Next, I define a set of sentences to be \textit{maximally-compact} iff it is compact and not property contained in any other compact set of sentences. Thus a set of sentences is maximally-compact iff it loses its compactness if any sentence not already a member is added to it. There are two key properties of maximally-compact sets of sentences. Let $\Delta$ be a maximally-compact set of sentences and $\phi$ by any sentence. Then:
+
+\begin{enumerate}
+	\item[(1)] $\phi \in \Gamma$ iff $\neg\phi \not\in \Gamma$, and
+	\item[(2)] $(\phi \land \psi) \in \Gamma$ iff both $\phi \in \Gamma$ and $\psi \in \Gamma$.
+\end{enumerate}
+
+Proof of (1): Left to right. Suppose for some $\phi$ that both $\phi \in \Gamma$ and $\neg\phi \in \Gamma$, but this implies $\{ \phi, \neg\phi \} \subset \Gamma$ which contradicts the hypothesis that $\Gamma$ is compact. So there there is no $\phi$ such that $\phi \in \Gamma$ and $\neg\phi \in \Gamma$. Right to left. Suppose neither $\phi \in \Gamma$ nor $\neg\phi \in \Gamma$. By Lemma \ref{lem:either-or-compact}, there is a set $\{ \phi \} \cup \Gamma$ or $\{ \neg\phi \} \cup \Gamma$ which is compact, but this contradicts the hypothesis that $\Gamma$ is maximal. So for any $\phi$, $\phi \in \Gamma$ or $\neg\phi \in \Gamma$.
+
+Proof of (2): Left to Right. Suppose for some $\phi$ and $\psi$ that $(\phi \land \psi) \in \Gamma$ and $\phi \not\in \Gamma$. By (1), $\neg\phi \in \Gamma$, so $\{ (\phi \land \psi), \neg\phi \} \subset \Gamma$. But this contradicts the hypothesis that $\Gamma$ is compact, so $\phi \in \Gamma$. The arguments for $\psi \in \Gamma$ and the right to left implication follow analogously.
+
+Finally, a set of sentences $\Gamma$ is $\omega$-complete iff for every formula $\phi$ and variable $\alpha$, if $(\exists \alpha)\phi \in \Gamma$, then for some constant $\beta$, the sentence $\phi\alpha/\beta \in \Gamma$ where $\phi\alpha/\beta$ is the sentence obtained by replacing each free occurrence of $\alpha$ in $\phi$ with $\beta$. When a set of sentences $\Gamma$ is both maximally-compact and $\omega$-complete, two more facts obtain:
+
+\begin{enumerate}
+	\item[(3)] $(\exists \alpha)\phi \in \Gamma$ iff for some constant $\beta$, $\phi\alpha/\beta \in \Gamma$, and
+	\item[(4)] $(\forall \alpha)\phi \in \Gamma$ iff for every constant $\beta$ appearing in $\Gamma$, $\phi\alpha/\beta \in \Gamma$.
+\end{enumerate}
+
+The proof of (3) is trivial given the definition of $\omega$-completeness. Proof of (4): Left to right. Suppose $(\forall \alpha)\phi \in \Gamma$ and for some constant $\beta$, $\phi\alpha/\beta \not\in \Gamma$. By (1), $\neg\phi\alpha/\beta \in \Gamma$, and by (3), $(\exists \alpha)\neg\phi \in \Gamma$. Thus $\{ (\forall \alpha)\phi, (\exists \alpha)\neg\phi \} \subset \Gamma$, but this contradicts the hypothesis that $\Gamma$ is compact. Right to left follows analogously.
+
+Finally, a set of sentences $\Delta$ is a US/ES closure of a set $\Gamma$ iff the following three conditions hold:
+
+\begin{enumerate}
+	\item $\Gamma \subseteq \Delta$,
+	\item for every formula $\phi$ and variable $\alpha$, if $(\exists \alpha)\phi \in \Gamma$, then for some constant $\beta$, $\phi\alpha/\beta \in \Delta$, and
+	\item for every formula $\phi$ and variable $\alpha$, if $(\exists \alpha)\phi \in \Gamma$, then for every constant $\beta$ in $\Delta$, $\phi\alpha/\beta \in \Delta$, and
+	\item for every formula $\phi$ and variable $\alpha$, if $(\exists \alpha)\phi \in \Gamma$, then for some constant $\beta$, $\phi\alpha/\beta \in \Delta$.
+\end{enumerate}
+
+A set of sentences is US/ES closed iff it is a US/ES closure of itself. It should be noted that a maximally-compact, $\omega$-complete set of sentences is US/ES closed. This terminology is unnecessary for the proof of the compactness theorem, but it is useful for the subsequent proof of the completeness theorem.
+
+Now that the terminology has been established, the proof of the compactness theorem can be broadly separated in two parts. First, any compact set of sentences is contained in a maximally-compact, $\omega$-complete set of sentences. Second, any maximally-compact, $\omega$-complete set of sentences is satisfiable. From these, the compactness theorem immediately follows.
+
+\begin{lemma}
+	\label{lem:maximal}
+	Any compact set of sentences $\Gamma$ is contained in a maximally-compact, $\omega$-complete set of sentences $\Delta$.
+\end{lemma}
+
+\begin{proof}
+	Let $\{ \gamma_1, ..., \gamma_n, ...\}$ be a denumerably infinite set of constants not appearing in $\Gamma$, and consider an enumeration $E = \{ \phi_1, ..., \phi_n, ... \}$ of all sentences of $\mathscr{L}$ with the following stipulation: If $\phi_i = (\exists \alpha)\psi$, then $\phi_{i+1}=\psi\alpha/\gamma_j$ where $\gamma_j$ is the first constant which appears in no previous sentence of the enumeration. The existence of such an enumeration is taken for granted\footnote{Consult Boolos and Jeffrey\cite{boolosjeffrey} for more details.}. Define a sequence of sets of sentences as follows:
+	
+	\begin{align*}
+	\Delta_0 &= \Gamma \\
+	\Delta_{n+1} &= \begin{cases}
+	\{ \phi_n \} \cup \Delta_n & \textnormal{if the union is compact} \\
+	\Delta_n & \textnormal{otherwise}
+	\end{cases}\\
+	\Delta &= \bigcup_{i=0}^\infty \Delta_i
+	\end{align*}
+	
+	It should be obvious that each $\Delta_i$ is compact by definition. Prove that $\Delta$ is also compact. Suppose the contrary. So there is a finite, unsatisfiable subset $\Sigma = \{ \psi_1, ..., \psi_m \}$ of $\Delta$. Suppose without loss of generality that the enumeration of $\Sigma$ corresponds with $E$. $\psi_m = \phi_n$ for some sentence of index $n$ in $E$, so $\Sigma \subseteq \Delta_n$. But $\Delta_n$ is compact by definition which contradicts the hypothesis that $\Sigma$ is unsatisfiable. So $\Delta$ is compact.
+	
+	Let $\psi$ be a sentences not included in $\Delta$. $\psi=\phi_i$ for some $i$ because the $E$ enumerates each sentences of the language. Since $\psi \not\in \Delta$, $\psi \not\in \Delta_i$. $\psi$ was not included by the procedure in stage $i$, so $\{ \psi \} \cup \Delta_i$ is not compact. So $\{ \psi \} \cup \Delta$ is not compact. Therefore, no compact set of sentences properly includes $\Delta$. In other words, $\Delta$ is maximally-compact.
+	
+	Finally, Suppose $(\exists \alpha)\psi \in \Delta$. $\phi_i =(\exists \alpha)\psi$ for some index $i$, and by the stipulation on $E$, $\phi_{i+1}=\psi\alpha/\gamma$ for some constant $\gamma$ which appears in no sentence of $\Gamma$ nor in any sentence with an index lower than $i+1$. Let $\Sigma$ be a finite subset of $\Delta_i$. $\Sigma$ is satisfiable by construction, and let $\mathscr{I}$ be an interpretation which models $\Sigma$. There always exists an interpretation of $\Sigma$ which models $(\exists \alpha)\psi$ because $\{ (\exists \alpha)\psi \} \cup \Sigma$ is a finite subset of $\Delta_i$. So without loss of generality suppose $\mathscr{I}$ models $(\exists \alpha)\psi$. There is an object $\beta$ in the domain of $\mathscr{I}$ which satisfies $(\exists \alpha)\psi$. Construct an interpretation $\mathscr{I}'$ which is the interpretation $\mathscr{I}$ augmented with the name $\gamma$ whose denotation is $\beta$, so $\mathscr{I}'$ models $\{ \psi\alpha/\gamma \} \cup \Sigma$. $\Sigma$ was chosen arbitrarily, so every finite subset of $\{ \psi\alpha/\gamma \} \cup \Delta_i$ is satisfiable. Therefore, $\psi\alpha/\gamma \in \Delta$.
+\end{proof}
+
+The second part of this proof is to show that a maximally-compact and $\omega$-complete set of sentences $\Delta$ is satisfiable. I am going to prove this lemma is unconventional and is inspired by a similar proof by George Boolos and Richard Jeffrey\cite{boolosjeffrey}. This proof is split in two parts. First, I show that the quantifier-free sentences of $\Delta$ are satisfied by an interpretation whose domain is the set of constants appearing in $\Delta$ and each constant denotes itself. Then I show that if a set of sentences is US/ES closed and the quantifier-free sentences are satisfiable, then the entire set is satisfiable. This later lemma will be very useful for the proof completeness theorem presented in the next section. 
+
+\begin{lemma}
+	\label{lem:q-free-sat}
+	Let $\Delta$ be a maximally-compact, $\omega$-complete set of sentences. There exists an interpretation $\mathscr{I}$ with the following properties:
+	
+	\begin{enumerate}
+		\item $\mathscr{I}$ models the quantifier-free sentences of $\Delta$,
+		\item the domain of $\mathscr{I}$ is the set of constants appearing in $\Delta$, and
+		\item each constant denotes itself.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	This proof follows in two parts. First, I define an interpretation $\mathscr{I}$ which models every atomic sentences of $\Delta$. Then, I prove that this interpretation models every sentence in $\Delta$. Let $\mathscr{I}$ be defined as follows. For each sentence letter $\phi$ of $\mathscr{L}$, let $\mathscr{I}$ associate the truth value $T$ with $\phi$ if $\phi \in \Delta$, otherwise $F$. With each $n$-ary predicate letter $\Theta$ of $\mathscr{L}$, let $\mathscr{I}$ associate the set of $n$-tuples of constants $\langle \beta_1, ..., \beta_n \rangle$ if the atomic sentence formed by writing $\Theta$ followed by the string of constant $\beta_1...\beta_n$ is a member of $\Delta$.
+	
+	The second part of this proof follows by showing that the interpretation $\mathscr{I}$ as defined models every sentence of $\Delta$. I define the \textit{index} of a sentence to be the number of occurrences of `$\land$' and `$\neg$' in it.  The proof that $\mathscr{I}$ models a sentence $\phi$ iff $\phi$ is a member of $\Delta$ follows by induction over the index $i$ of $\phi$. For the base case, let $i=0$. Sentence letters are the only sentences of index 0. Let $\phi$ be an atomic sntence. By definite of the interpretation, $\mathscr{I}$ models $\phi$ iff $\phi \in \Delta$. Assume for induction that $\mathscr{i}$ models a sentence of index $i$ where $0 \leq i < k$ iff it is a member of $\Delta$. When $i=k$, show that $\mathscr{I}$ models a sentence of index $i$ iff it is a member of $\Delta$. Let $\phi$ be a sentence of index $i$. $\phi$ is one of the following cases: 
+	
+	\begin{enumerate}
+		\item $\phi = \neg\psi$. $\mathscr{I}$ models $\neg\psi$ iff $\mathscr{I}$ does not model $\psi$. $\mathscr{I}$ does not model $\psi$ iff $\psi \not\in \Delta$ by induction hypothesis because the index of $\psi$ is $i-1$. $\psi \not\in \Delta$ iff $\neg\psi \in \Delta$ by (1). Therefore, $\mathscr{I}$ models $\neg\psi$ iff $\neg\psi \in \Delta$.
+		\item $\phi = (\psi \land \chi)$. $\mathscr{I}$ models $(\psi \land \chi)$ iff $\mathscr{I}$ models both $\psi$ and $\chi$. $\mathscr{I}$ models both $\psi$ and $\chi$ iff $\{ \psi, \chi \} \subseteq \Delta$ by induction hypothesis because the indices of $\psi$ and $\chi$ are lower than $i$. $\{ \psi, \chi \} \subseteq \Delta$ iff $(\psi \land \chi) \in \Delta$ from (2). Therefore, $\mathscr{I}$ models $(\psi \land \chi)$ iff $(\psi \land \chi) \in \Delta$.
+	\end{enumerate}
+	
+	So for any sentence $\phi \in \Delta$, $\mathscr{I}$ models $\phi$. Therefore, $\Delta$ is satisfiable.
+\end{proof}
+
+\begin{theorem}{\textnormal{(Reduction)}}
+	\label{reduction}
+	If $\Gamma$ be an unsatisfiable and US/ES closed set of sentences, then the quantifier-free sentences of $\Gamma$ are unsatisfiable. 
+\end{theorem}
+
+\begin{proof}
+	This proof follows by contrapositive. First suppose the quantifier free sentences of $\Gamma$ are satisfiable. Let $\Delta$ be a maximally-compact and $\omega$-complete set of sentences containing $\Gamma$ obtained by lemma \ref{lem:maximal}. Let $\mathscr{I}$ be an interpretation of $\Delta$ obtained by lemma \ref{lem:q-free-sat}. Define $\mathscr{I}'$ to be the interpretation $\mathscr{I}$ with the domain limited to the constants appearing in $\Gamma$. $\mathscr{I}'$ has the following properties:
+	
+	 \begin{enumerate}
+	 	\item $\mathscr{I}'$ models the quantifier-free sentences of $\Gamma$,
+	 	\item the domain of $\mathscr{I}'$ is the set of constants appearing in $\Gamma$, and
+	 	\item each constant denotes itself.
+	 \end{enumerate}
+	
+	For the proof of this lemma, I define the index of a sentence to be the number of quantifiers appearing in it. This proof follows by induction over the index of sentences of $\Gamma$. The base case is trivial as quantifier-free sentences are the only sentences of index 0, and $\mathscr{I}'$ models the quantifier-free sentences of $\Gamma$ by construction. Assume $\mathscr{I}'$ models every sentence in $\Gamma$ of index $j$ where $1 \leq j < k$. Show that $\mathscr{I}'$ models every sentence in $\Gamma$ of index $k$. Let $\phi$ be a sentence in $\Gamma$ of index $k$. $\phi$ is one of two cases.
+	
+	\begin{enumerate}
+		\item $\phi=(\exists \alpha)\psi$. Since $\Gamma$ is US/ES closed, then $\psi\alpha/\beta \in \Gamma$ for some constant $\beta$. $\mathscr{I}'$ models $\psi\alpha/\beta$ by induction hypothesis, so $\mathscr{I}'$ models $(\exists \alpha)\psi$.
+		\item $\phi=(\forall \alpha)\psi$. Since $\Gamma$ is US/ES closed, then $\psi\alpha/\beta \in \Gamma$ for ever constant $\beta$ appearing in sentences of $\Delta$. $\mathscr{I}'$ models each $\psi\alpha/\beta$ by induction hypothesis. The domain of $\mathscr{I}'$ is the set of constants appearing $\Gamma$, and each constant denotes itself. So each object of the domain is denoted by an instantiation of $(\forall \alpha)\psi$, so $\mathscr{I}$ models $(\forall \alpha)\psi$.
+	\end{enumerate}
+
+	So $\mathscr{I}'$ models every sentence in $\Gamma$. Therefore, $\Gamma$ is satisfiable.
+\end{proof}
+
+The compactness theorem follows immediately from the proofs of lemmas \ref{lem:maximal} and \ref{lem:q-free-sat}, and the reduction theorem.
+
+\begin{theorem}{\textnormal{(Compactness)}}
+	If a set of sentences is unsatisfiable, then a finite subset of it is unsatisfiable.
+\end{theorem}
+
+\begin{proof}
+	This proof follows by contrapositive. Suppose $\Gamma$ is a compact set of sentences. Let $\Delta$ be a maximally-compact and $\omega$-complete set of sentences which contains $\Gamma$ obtained by lemma \ref{lem:maximal}. By lemma \ref{lem:q-free-sat}, the quantifier-free sentences of $\Delta$ are satisfiable. Since all maximally-compact and $\omega$-complete set of sentences are US/ES closed, $\Delta$ is satisfiable by the reduction theorem.
+\end{proof}
+
+\section{Completeness}
+
+The discussion up until this point has only concerned the semantics of first-order logic, but the completeness theorem concerns the link between logical consequence and a derivation. For this reason, a set of rules must be defined for the construction of derivations. Every set of rules does not possess the property of completeness, so the decision for which rules are chosen cannot be arbitrary. I argue that the semantic principles proved in the previous section guides the choice of rules. (**how do I work the definition of the rules into this section**)
+
+The two semantic principles which guide the choice of rules are the compactness and reduction theorems. These principles are not immediately related to logical consequence; rather, these two principles have to do with unsatisfiable sets of sentences. But this is no matter because logical consequence is directly related with unsatisfiable sets of sentences by the following principle: $\Gamma \models \phi$ iff $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. The completeness theorem presented in this section is a procedure which derives a contradiction from any unsatisfiable set of sentences. 
+
+The principle lemma of this section is stated as follows: If a set of sentences $\Gamma$ is unsatisifable, then $\Gamma \vdash (P \land \neg P)$. But this provides little insight into which rules are required to make such a claim. There are more easily solved subproblems exposed by the reduction and compactness theorems: If a US/ES closed set of sentences is unsatisfiable, then a finite subset of the quantifier-free sentences of it is unsatisfiable. If a set of rules is capable of deriving a contradiction from any finite and unsatisfiable set of quantifier-free sentences, then the set of rules is capable of deriving a contradiction from any US/ES closed set of sentences.
+
+To complete the proof of the principle lemma, a set of rules must be capable of entering each sentence of a US/ES closure into a derivation at one point or another. The US/ES closure of a set may be infinite even if the set itself is finite. All that is required is for a set of rules to be capable of entering any particular sentence of a US/ES closure on a finite line number. The proof of the principle lemma follows by defining a procedure that, if taken out ad infinitum, will write each sentence in a US/ES closure of a set of sentences in a derivation. I then prove that this derivation contains the sentence $(P \land \neg P)$ on some finite line number. Let $\Gamma = \{ \phi_1, ..., \phi_n, ... \}$ be a set of sentences in prenix normal form and $\{ \gamma_1, ..., \gamma_n, .. \}$ be a denumerably infinite set of constants not appearing in $\Gamma$. The procedure is defined as follows:
+
+\begin{enumerate}
+	\item Enter $\phi_i$ on a new line with justification (P).
+	\item For every existential sentence $(\exists \alpha)\psi$ appearing in the derivation for which no instantiation of it appears on a later line, enter the sentence $\psi\alpha/\gamma$ on a new line with justification (ES) where $\gamma$ is the first $\gamma_j$ which appears in no prior sentence in the derivation.
+	\item For every universal sentence $(\forall \alpha)\psi$ appearing in the derivation and each constant $\beta$ appearing in the derivation, if $\psi\alpha/\beta$ does not appear in the derivation, enter it on a new line with justification (US). If no constants appear in the derivation, enter the sentence $\psi\alpha/\gamma_1$ on a new line with justification (US).
+	\item Perform a truth table test on the quantifier-free sentences of the derivation. If this test is unsatisfiable, enter $(P \land \neg P)$ .
+\end{enumerate} 
+
+\begin{lemma}
+	If $\Gamma$ is an unsatisfiable set of sentences, then $\Gamma \vdash (P \land \neg P)$
+\end{lemma} 
+
+\begin{proof}
+	Let $\Gamma = \{\phi_1, ..., \phi_n, ...\}$ and consider a derivation constructed from $\Gamma$ following the procedure. Let $\Delta$ be the set of sentences in prenix normal form on lines of the derivation if the derivation were carried out ad infinitum. It should be noted that $\Delta$ is a US/ES closure of $\Gamma$. By the reduction and compactness theorems, there exists a finite and unsatisfiable subset of the quantifier-free sentences of $\Delta$. Name this subset $\Sigma$. Every sentence in $\Sigma$ appears in the derivation and $\Sigma$ is finite, so at some finite stage $m$, each sentence of $\Sigma$ appears in the derivation. At stage $m$, the truth table test evaluating the quantifier-free sentences appearing in the derivation will be unsatisfiable, so the procedure will enter the sentence $(P \land \neg P)$ into the derivation.
+\end{proof}
+
+This does not create a complete set of rules because there is a still a gap between deriving a contradiction from any unsatisfiable set of sentences and deriving any consequence of a set of sentences. A set of rules must have the ability to bridge this gap. Under the assumption that $\Gamma \models \phi$, what we have is a set of rules which can derive a contradiction from $\{ \neg\phi \} \cup \Gamma$. The conclusion has an additional premise which might not appear in $\Gamma$. A rule must be able to eject the additional premise from the conclusion while also removing the negation. If a set of rules can do these three things, then they are complete. Based on this discussion I introduce five rules which I use to prove the completeness theorem of first-order logic.
+
+\begin{theorem}{\textnormal{(Completeness)}}
+	If $\Gamma \models \phi$, then $\Gamma \vdash \phi$. 
+\end{theorem}
+
+\begin{proof}
+	Suppose $\Gamma \models \phi$, so $\{ \neg\phi \} \cup \Gamma$ is unsatisfiable. By the principle lemma, there exists a derivation from $\{ \neg\phi \} \cup \Gamma$ to $(P \land \neg P)$. Extend this derivation by writing the sentence $\phi$ on the next line with justification (RAA) and discharge the premise $\neg\phi$. So there is a derivation from $\Gamma$ to $\phi$. Therefore $\Gamma \vdash \phi$.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,60 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/dev/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: proposal2.aux
+The style file: plain.bst
+Database file #1: proposal.bib
+Warning--entry type for "lagaeetal2006" isn't style-file defined
+--line 61 of file proposal.bib
+Warning--I'm ignoring perlin2001's extra "title" field
+--line 154 of file proposal.bib
+Warning--there's a number but no series in berger1966
+Warning--can't use both volume and number fields in cookderose2005
+Warning--can't use both volume and number fields in gain2015
+Warning--can't use both volume and number fields in lagaeetal2010
+Warning--can't use both volume and number fields in musgraveetal1989
+Warning--can't use both volume and number fields in perlin1985
+Warning--can't use both volume and number fields in perlin2002
+Warning--can't use both volume and number fields in perlin1989
+Warning--can't use both volume and number fields in smelik2014
+You've used 22 entries,
+            2118 wiz_defined-function locations,
+            628 strings with 6671 characters,
+and the built_in function-call counts, 8110 in all, are:
+= -- 813
+> -- 302
+< -- 20
++ -- 127
+- -- 98
+* -- 522
+:= -- 1231
+add.period$ -- 65
+call.type$ -- 22
+change.case$ -- 114
+chr.to.int$ -- 0
+cite$ -- 31
+duplicate$ -- 348
+empty$ -- 675
+format.name$ -- 98
+if$ -- 1774
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 18
+newline$ -- 110
+num.names$ -- 44
+pop$ -- 136
+preamble$ -- 1
+purify$ -- 93
+quote$ -- 0
+skip$ -- 296
+stack$ -- 0
+substring$ -- 542
+swap$ -- 141
+text.length$ -- 20
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 86
+warning$ -- 9
+while$ -- 85
+width$ -- 24
+write$ -- 243
+(There were 11 warnings)

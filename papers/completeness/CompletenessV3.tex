@@ -1,0 +1,61 @@
+\title{Two Flavors of Completeness}
+\author{
+        Mark Reuter
+}
+\date{}
+
+\documentclass[12pt,letterpaper]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+%\usepackage{mathptmx}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=0.5in]{geometry}
+\usepackage{setspace}
+
+\begin{document}
+
+\begin{huge}
+	\begin{equation*}
+	\Gamma \models (\phi \land \neg \phi) \Longrightarrow (\exists \Sigma \subseteq \Gamma)(|\Sigma| < |\mathbb{N}| \textnormal{\&} \Sigma \models (\phi \land \neg \phi))
+	\end{equation*}
+\end{huge}
+
+\begin{huge}
+	\begin{equation*}
+	\Gamma \models \bot \Longrightarrow (\exists \Sigma \subseteq \Gamma)(|\Sigma| < |\mathbb{N}| \textnormal{\&} \Sigma \models \bot)
+	\end{equation*}
+\end{huge}
+
+\begin{huge}
+	\begin{equation*}
+	\Gamma \models \bot \Longrightarrow (\exists \Sigma \subseteq \Gamma)(|\Sigma| < |\mathbb{N}| \land \Sigma \models \bot)
+	\end{equation*}
+\end{huge}
+
+\begin{huge}
+	\begin{equation*}
+	\Gamma \models \bot \Longrightarrow (\exists \Sigma \subseteq \Gamma)(|\Sigma| < \aleph_0 \land \Sigma \models \bot)
+	\end{equation*}
+\end{huge}
+
+\begin{huge}
+	\begin{equation*}
+	\Gamma \models \bot \Longrightarrow (\exists \text{ finite } \Sigma \subseteq \Gamma)\Sigma \models \bot
+	\end{equation*}
+\end{huge}
+
+\end{document}

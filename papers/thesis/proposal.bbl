@@ -1,0 +1,118 @@
+\begin{thebibliography}{10}
+
+\bibitem{benes2001}
+Bedrich Benes and Rafael Forsbach.
+\newblock Layered data representation for visual simulation of terrain erosion.
+\newblock In {\em PROC. IEEE Spring Conference on Computer Graphics}, pages
+  80--86, 2001.
+
+\bibitem{berger1966}
+Robert Berger.
+\newblock {\em The undecidability of the domino problem}.
+\newblock Number~66. American Mathematical Soc., 1966.
+
+\bibitem{cheng2014}
+Wei-Chien Cheng, Wen-Chieh Lin, and Yi-Jheng Huang.
+\newblock Controllable and real-time reproducible perlin noise.
+\newblock In {\em PROC. International Symposium on Smart Graphics}, pages
+  86--97, 2014.
+
+\bibitem{cookderose2005}
+Robert~L Cook and Tony DeRose.
+\newblock Wavelet noise.
+\newblock In {\em ACM Transactions on Graphics}, volume~24, pages 803--811.
+  ACM, 2005.
+
+\bibitem{gain2015}
+James Gain, Bruce Merry, and Patrick Marais.
+\newblock Parallel, realistic and controllable terrain synthesis.
+\newblock In {\em Computer Graphics Forum}, volume~34, pages 105--116, 2015.
+
+\bibitem{gustavson2005}
+Stefan Gustavson.
+\newblock Simplex noise demystified.
+\newblock Technical report, Link{\"o}ping University, 03 2005.
+
+\bibitem{wang1961}
+Wang Hao.
+\newblock Proving theorems by pattern recognition.
+\newblock {\em Bell system technical journal}, 40(1):1--41, 1961.
+
+\bibitem{jeandelrao2015}
+Emmanuel Jeandel and Michael Rao.
+\newblock An aperiodic set of 11 wang tiles.
+\newblock {\em arXiv preprint arXiv:1506.06492}, 2015.
+
+\bibitem{lagaedutre2006}
+Ares Lagae and Philip Dutr{\'e}.
+\newblock An alternative for wang tiles: colored edges versus colored corners.
+\newblock {\em ACM Transactions on Graphics}, 25(4):1442--1459, 2006.
+
+\bibitem{lagaeetal2006}
+Ares Lagae, Jarkko Kari, and Philip Dutr{\'e}.
+\newblock Aperiodic sets of square tiles with colored corners, 2006.
+
+\bibitem{lagaeetal2010}
+Ares Lagae, Sylvain Lefebvre, Rob Cook, Tony DeRose, George Drettakis, David
+  Ebert, John Lewis, Ken Perlin, and Matthias Zwicker.
+\newblock A survey of procedural noise functions.
+\newblock In {\em PROC. Computer Graphics Forum}, volume~29, pages 2579--2600,
+  2010.
+
+\bibitem{maung2016}
+David Maung.
+\newblock {\em Tile-based Method for Procedural Content Generation}.
+\newblock PhD thesis, The Ohio State University, 2016.
+
+\bibitem{musgraveetal1989}
+F~Kenton Musgrave, Craig~E Kolb, and Robert~S Mace.
+\newblock The synthesis and rendering of eroded fractal terrains.
+\newblock In {\em PROC. ACM SIGGRAPH 1989}, volume~23, pages 41--50, 1989.
+
+\bibitem{nurmi2016}
+Tuomas Nurmi.
+\newblock From checkerboard to cloverfield: Using wang tiles in seamless
+  non-periodic patterns.
+\newblock {\em PROC. Bridges}, pages 159--166, 2016.
+
+\bibitem{olsen2004}
+Jacob Olsen.
+\newblock Realtime procedural terrain generation-realtime synthesis of eroded
+  fractal terrain for use in computer games, 2004.
+
+\bibitem{perlin1985}
+Ken Perlin.
+\newblock An image synthesizer.
+\newblock In {\em PROC. ACM SIGGRAPH 1985}, volume~19, pages 287--296, 1985.
+
+\bibitem{perlin2001}
+Ken Perlin.
+\newblock Noise hardware, 2001.
+
+\bibitem{perlin2002}
+Ken Perlin.
+\newblock Improving noise.
+\newblock In {\em PROC. ACM SIGGRAPH 2002}, volume~21, pages 681--682, 2002.
+
+\bibitem{perlin1989}
+Ken Perlin and Eric Hoffert.
+\newblock Hypertexture.
+\newblock In {\em PROC. ACM SIGGRAPH 1989}, volume~23, pages 253--262, 1989.
+
+\bibitem{smelik2014}
+Ruben~M Smelik, Tim Tutenel, Rafael Bidarra, and Bedrich Benes.
+\newblock A survey on procedural modelling for virtual worlds.
+\newblock In {\em PROC. Computer Graphics Forum}, volume~33, pages 31--50,
+  2014.
+
+\bibitem{yoonlee2008}
+Jong-Chul Yoon and In-Kwon Lee.
+\newblock Stable and controllable noise.
+\newblock {\em Graphical Models}, 70(5):105--115, 2008.
+
+\bibitem{yoonetal2004}
+Jong-Chul Yoon, In-Kwon Lee, and Jung-Ju Choi.
+\newblock Editing noise.
+\newblock {\em Computer Animation and Virtual Worlds}, 15(3-4):277--287, 2004.
+
+\end{thebibliography}

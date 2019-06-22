@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathptmx}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage{setspace}
+\singlespacing
+
+
+\begin{document}
+\noindent Intel AVX-512 Vector Instructions
+
+\noindent Mark Reuter$\\$
+
+Discuss the capabilities/operations supported in this instruction set extension for loading/unloading its packed/partitioned registers, including operations for vector permutation. In your answer, discuss and analyze impact/limit on performance due to needing to load + store data into/out of these registers.
+
+The Intel AVX-512 extension broadens the instruction set architecture to include vector instructions. The performance gained from these instructions is highly contingent on memory alignment. To achieve maximum performance, an entire vector register should be filled with a single load. Tian et al. [1] show that aggressive compiler alignment optimizations to the vector size rather than the system byte alignment results in a 1.32-1.45x speedup. The authors also note that regular/linear data access and computation leads to far greater speedup compared to highly branching code, and to demonstrate this fact, they test common high performance computing applications and show as high as a 12.45x speedup in 1D Convolution and as low as 2.25x speedup in the case of Tree Search. The former has highly regular data access, whereas the later has branching code.
+
+There are several limitations to achieving the ideal situation. First, data loaded into a vector register may not be in the correct order. Vector permutation instructions are included in the ISA to overcome this problem. Ren et al. [2] state that vector permutation operations are the most common source of overhead in SIMD applications. This does not imply that these instructions are the most common limitation on performance in SIMD applications. Zhou et al. [3] identifies memory access to be the most common performance limitation. Even though vector permutations are not the most common performance limitation, these operations can can nullify the performance gains from other SIMD operations. In the example of bit-reversal array reordering on arrays of word sized integers, the additional vector permutation instructions lead to a loss in performance for arrays up to size 32. But on larger arrays up to size 256, the performance gain from other vector operations outweighed the overhead induced by the permutation instructions.
+
+Second, the data in memory might not always be aligned to 64 byte linear loads. For example, the tail end of an array may not necessarily align with an entire vector load/store potentially causing unsafe access to memory outside of the array. Data can also be interleaved with a regular stride. The ISA is equipped to deal with these problems [4]. Masked vector load/store operations are introduced which do not fill the entire register [5]. These instructions introduce some overhead. First, they require a mask register to be filled. This mask register will be used by the masked load/store operations to identify which elements are to be loaded from memory or where they are to be stored. The mask register can be used for safely loading/storing the tail end of the array. As well, these registers can be used to state the stride of a load/store operation on interleaved data. It is important to note that computing the mask can introduce extra overhead. 
+
+Zhou et al. [3] present an alternative to using masked load/store operations. They pad the tail end of data which would be insufficient to fill an entire vector register and use the unmasked load/store operations to load the padded data. This approach lead to a 1.09-1.18x speedup in double precision and a 1.17-1.23x speedup in single precision. The authors state that the discrepancies between single and double precision floating point speedup is due to the padding causing more cache misses. This result shows that masked load/store operations suffer a performance penalty compared to the basic load/store operations. But this approach is not applicable to all situations such as interleaved data.
+
+\textbf{References}
+
+\begin{enumerate}[label={[\arabic*]}]
+	\item X. Tian, H. Saito, S. V. Preis, E. N. Garcia, S. S. Kozhukhov, M. Masten, A. G. Cherkasov, and N. Panchenko, "Practical SIMD vectorization techniques for Intel® Xeon Phi coprocessors," in \textit{2013 IEEE International Symposium on Parallel \& Distributed Processing, Workshops and Phd Forum,} \textit{IEEE 2013,} \textit{Cambridge, MA, USA, May 20-24, 2013,} M. Herbordt and C. Weems, Eds. IEEE, 2013. pp. 1149-58.
+	\item G. Ren, P. Wu, and D. Padua, "Optimizing Data Permutations for SIMD Devices," \textit{ACM SIGPLAN Notices}, vol. 41, no. 6, pp. 118-31, June 2006.
+	\item H. Zhou and X. Jingling, "A compiler approach for exploiting partial SIMD parallelism," \textit{ACM Transactions on Architecture and Code Optimization}, vol. 13, no. 1, pp. 11-36, Apr. 2016.
+	\item Intel Corporation, "Intel® Architecture Instruction Set Extensions and Future Features Programming Reference," Intel Corporation, Santa Clara, CA, Tech. Memo. Ref. \# 319433-036, Apr. 2019.
+	\item A. Sodani, R. Gramunt, J. Corbal, H.-S. Kim, K. Vinod, S. Chinthamani, S. Hutsell, R. Agarwal, Y.-C. Liu, "Knights landing: Second-generation Intel Xeon Phi Product", \textit{IEEE Micro}, vol. 36, no. 2, pp. 34-46, Apr. 2016.
+\end{enumerate}
+
+\textbf{Addendum}
+
+\begin{enumerate}[label={[\arabic*]}]
+	\item This article contributed approaches to loop vectorization and the impact of data alignment on vector load/store operations.
+	\item This article contributed information on the performance of vector permutation instructions.
+	\item This article contributed additional information on loop vectorization related to unfilled vector registers and padding optimizations to vector loads.
+	\item This report contributed detained documentation on the AVX-512 vector instructions.
+	\item This article contributed additional detains on the AVX-512 ISA and register use information.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,43 @@
+\title{Lit Review: Editing Noise}
+\author{
+        Mark Reuter
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+Perlin Noise algorithm
+
+\begin{enumerate}
+	\item Let $perlin(x = (x_1, ..., x_N)): \mathbb{R}^N \rightarrow [-1 \; 1]$ be the perlin noise function where $N$ is the dimension.
+	\item Let $smooth(t) = 5t^5 - 15t^4 + 10t^3$
+	\item Let $\mathscr{G} = \{ g_1, ..., g_m \}$ be a set of gradient vectors
+	\item Define a function $p: \mathbb{Z}^N \rightarrow \mathscr{G}$
+	\item Let $x' = (x'_1, ..., x'_N) = \floor{x}$
+	\item Let $s_i = smooth(x_i - x'_i)$ when $1 \leq i \leq N$
+	\item Let $u_1, ..., u_{2^N}$ be all possible permutation of 0 and 1 for $N$-long vectors
+	\item Obtain $h_i = p(x' + u_j)$ when $1 \leq j \leq 2^N$
+\end{enumerate}
+
+\end{document}

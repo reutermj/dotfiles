@@ -1,0 +1,84 @@
+\title{The Completeness of Mates' Rule Set}
+\author{
+        Mark Reuter
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\usepackage{setspace}
+\doublespacing
+
+
+\begin{document}
+\maketitle
+
+\section{Completeness of Mates' Rule Set}
+
+In the previous section, I proved the existence of a derivation from any unsatisfiable set of sentences to $(P \land \neg P))$, but I made no mention of the structure of this derivation. I now hope to remedy this fact. I will be discussing a method for constructing a derivation using only the rules described in Mates. I will continue using the concept of a derivation from the previous section and will ignore the "housekeeping" required for derivations in Mates' rules\footnote{These housekeeping requirements are the premise-numbers, line numbers, and statement of which rule and previous lines were used.}. There is a convenient assumption I would like to make in this section. I will only be considering sentences in prenix normal form. This has no impact on this procedure because there is a derivation from any sentence to its prenix normal form. The restriction that sentences may only contain atomic formulae and `$\land$', `$\neg$', and `$\exists$' may be lifted for this section. As well, the sentences in a unsatisfiable sentences must be written in language $\mathscr{L}$, but the procedure I describe is in terms of language $\mathscr{L}^a$ for the same reason that Henkin construction must be completed in $\mathscr{L}^a$.
+
+Using Mates' rules, certain unsatisfiable sets of sentences are much more complicated to derive $(P \land \neg P)$ from than others. For example, a derivation from a finite, unsatisfiable, and quantifier-free set of sentences to $(P \land \neg P)$ follows by entering each sentence in the set into the derivation using rule P and a single application of the rule T to derive the conclusion $(P \land \neg P)$. But once quantifiers are added and these sets become infinite, the derivation becomes more complicated. Fortunately, the Compactness result in section 3 assures us that for any infinite, unsatisfiable set of sentences, there is a finite, unsatisfiable subset of it. This allows us to derive from any set of unsatisfiable sentences, a finite subset of it that is unsatisfiable. If we can bridge the gap, so to say, between finite, unsatisfiable sets of sentences and finite, unsatisfiable, and quantifier-free set of sentences---then it is easy to complete the derivation from any unsatisfiable sets of sentences to $(P \land \neg P)$, and this is what I will do first. 
+
+\begin{lemma}
+	Suppose that $\Gamma$ is a finite, unsatisfiable set of sentences written in $\mathscr{L}$, $\gamma_1, \gamma_2, ..., \gamma_n, ...$ is a sequence of constants from $\mathscr{L}^a$ not appearing in $\Gamma$, and $\phi_1, \phi_2, ..., \phi_n$ is a derivation with the following properties:
+	
+	\begin{enumerate}
+		\item every sentence appearing in $\Gamma$ appears in the derivation,
+		\item for every existential sentence $\phi_i = (\exists \alpha)\psi$ appearing in the derivation and for the first $\gamma_j$ not appearing in the derivation thus far, the sentence $\psi\alpha/\gamma_j$ appears in the derivation at a later index,
+		\item for every universal sentence $\phi_i = (\forall \alpha)\psi$ appearing in the derivation and for every constant $\beta_j$ appearing prior to index $i$ or in sentence $\psi$, then the sentence $\psi\alpha/\beta_j$ appears in the derivation at some later index.
+		\item for every universal sentence 
+	\end{enumerate}
+	
+	Then the quantifier-free sentences of the derivation are unsatisfiable. 
+\end{lemma} 
+
+\section{Introduction}
+The idea behind the Henkin completeness proof is that from any unsatisfiable set of sentences, there exists a derivation of $(P \land \neg P)$ using some sound rules. The result presented in this paper is a more specific result. From any unsatisfiable set of sentences, there exists an algorithmic derivation of $(P \land \neg P)$ using Mates' rule set. These results differ minutely. The former states the existence of a complete rule set; whereas, the later states that Mates' rule set is complete.
+
+The proof of this result is presented in two parts. First, I present an algorithm that I claim derives $(P \land \neg P)$ from any unsatisfiable set of sentences. Then I prove the correctness of this procedure. Prior to defining the algorithm. I want to explore some of the considerations that went into creating it. First, this procedure only considers sentences in prenex normal form. This is for convenience and has no impact on the results of the proof because there is decidably a derivation from any sentence to its normal form (Mates p. 137-138).
+
+Second, deriving $(P \land \neg P)$ from some sets of sentences is far easier than others. For instance, if a set of sentences is finite and quantifier-free, htne the satisfiability of it can be decided with a truth table test. And if such a set is decided to be unsatisfiable, then $(P \land \neg P)$ can be derived using a single application of rule T. Or more concisely, if a set of sentences is finite, quantifier-free, and unsatisfiable, then $(P \land \neg P)$ can be derived in only one line. In principle, such a set is the easiest to derive a contradiction from. In practice, these truth tables might be far too large for any man or machine, but a certain Greek god would have no problem completing. 
+
+The goal of the algorithm is thus to transform every unsatisfiable set of sentences to a finite, quantifier-free, and unsatisfiable set of sentences from which it is easy to derive $(P \land \neg P)$. The trick is showing that this is possible in all cases. This transformation is in two steps. First, reduce infinite and unsatisfiable sets of sentences to finite and unsatisfiable sets of sentences. Second transform finite and unsatisfiable sets of sentences to finite, quantifier-free, and unsatisfiable sets of sentences. The former is more well known as the Compactness theorem which will be proed in this paper, and the later will be proved using similar techniques.
+
+There is one final consideration. The language defined in chapter 3 of Mates, further refered to as $\mathscr{L}_1$, does not have enough individual constants to work for every unsatisfiable set of sentences. Consider an enumeration $\beta_1, \beta_2, ...$ of the individual constants of $\mathscr{L}_1$ and the set of sentences $\Gamma = \{ (\exists x)(\forall y)(Rxy \leftrightarrow \neg Ryy), \neg R\beta_1\beta_1, \neg R\beta_2\beta_2, ... \}$. It should be easy to see that $\Gamma$ is unsatisfiable as the first sentence is the form of the Russell paradox, but how could a derivation from this set to $(P \land \neg P)$ proceed? Use of the rule ES would seem like a necessity, but what individual constant could be used? It can't be any found in the enumeration because all of those already appear in $\Gamma$, so the use of ES is forbidden. But if this is the case, then the algorithm would under-perform because this is an unsatisfiable set, but Mates' rule set cannot derive $(P \land \neg P)$ from it. 
+
+Therefore, the algorithm must be defined in an augmented language. I will use $\mathscr{L}_1^a$ to be $\mathscr{L}_1$ augmented with a denumerably infinite set of individual constants. Specifically, I will use $\alpha_1, \alpha_2, ...$ as the additional individual constants in $\mathscr{L}_1^a$. Note that the original, unsatisfiable set of sentences must be defined in language $\mathscr{L}_1$. $\mathscr{L}_1^a$ will only be used in the derivation and Henkin Construction.
+
+\section{The Algorithm}
+
+\section{Henkin Construction}
+
+This paper could be aptly renamed 'Applications of Henkin Construction'. Once this technique is covered and the principle Lemma is proved, everything else follows quite quickly. The goal of Henkin Construction in this section is to prove the Compactness Theorem, a set of sentences is satisfiable iff every finite subset of it is satisfiable. It should be easy to convince yourself that the equivalence holds left to right, so this technique is used only to prove the equivalence right to left. This statement of compactness is has not been directly outlined in the introduction, but its contrapositive was. A set of sentences is unsatisfiable iff there is at least one finite, unsatisfiable subset of it. This statement of compactness will be used when reducing the problem of infinite, unsatisfiable sets to finite, unsatisfiable sets.
+
+With Henkin Construction, we are trying to prove the statement: For any set $\Gamma$, if every finite subset of $\Gamma$ is satisfiable, then $\Gamma$ is satisfiable. The proof proceeds directly. We assume that we have a set $\Gamma$ such that every finite subset of it is satisfiable. Our goal is then to provide an interpretation which models $\Gamma$. How this is done must be broken into parts. First, I will define the Henkin Construction technique. This technique relies on the clarification of several other concepts: Henkin Theory and Maximal Henkin Theory. Then I will prove several things about the result of the Henkin Construction technique which lead to the principle Lemma of this section. First I will prove that Henkin Construction produces a Maximal Henkin Theory. Next if an interpretation models the quantifier-free sentences in a Maximal Henkin Theory, then it models all the sentences. And finally, there is an interpretation of the quantifier-free sentences of the Maximal Henkin Theory produced by the Henkin Construction. Once these Lemmas are obtained, Compactness is proved directly. 
+
+\begin{definition}
+	$\Gamma$ is compact iff every finite subset of $\Gamma$ is satisfiable.
+\end{definition}
+
+\begin{definition}
+	$\Gamma$ is a Henkin Theory iff for each existential sentence $(\exists \alpha)\phi \in \Gamma$, there is a sentence $\phi\alpha/\beta \in \Gamma$ where $\beta$ is some individual constant.
+\end{definition}
+
+\begin{definition}
+	$\Gamma$ is a Maximal Henkin Theory iff $\Gamma$ is a Henkin Theory, $\Gamma$ is compact, and $\Gamma$ is not a proper subset of any compact Henkin Theory.
+\end{definition}
+
+\bibliographystyle{abbrv}
+\bibliography{main}
+
+\end{document}
