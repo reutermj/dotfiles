@@ -1,0 +1,2 @@
+#!/bin/sh
+dmenu_path | (date +"%I:%M %p"; cat -) | dmenu "$@" | ${SHELL:-"/bin/sh"} &
