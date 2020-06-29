@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install wget gnupg gnupg2
+sudo apt-get install wget gnupg gnupg2 curl
 
 echo "updating to sid/experimental"
 sudo rm /etc/apt/sources.list
@@ -9,6 +9,9 @@ sudo cp $HOME/.installscripts/sources.list /etc/apt/sources.list
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+
+curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add - 
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
 #wget -q -O - https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | sudo apt-key add -
 #echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
@@ -19,7 +22,7 @@ sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --pu
 
 #sudo cp $HOME/.installscripts/pinning /etc/apt/preferences.d/pinning
 
-sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton google-chrome-stable pavucontrol
+sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton google-chrome-stable pavucontrol vlc spotify-client
 
 echo "Adding my other hard drives"
 
@@ -28,8 +31,6 @@ mkdir $HOME/.games/
 
 echo "UUID=fd8efc54-e0e5-41af-910e-e7375ed55aca		/home/mark/.data/	  ext4	  defaults	  0	  1" | sudo tee -a /etc/fstab
 echo "UUID=1250a638-b034-416f-8bce-c50079c7415c		/home/mark/.games/	  ext4	  defaults	  0	  1" | sudo tee -a /etc/fstab
-
-ln -s $HOME/.games/steam/ $HOME/.steam/
 
 sudo shutdown -r now
 

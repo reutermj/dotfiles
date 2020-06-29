@@ -1,0 +1,6 @@
+#!/bin/bash
+
+ln -s $HOME/.steam/ $HOME/.games/steam/
+ln -s $HOME/movies/ $HOME/.data/videos/movies/
+ln -s $HOME/tvshows/ $HOME/.data/videos/tvshows/
+ln -s $HOME/music/ $HOME/.data/music/

@@ -1,0 +1,2 @@
+mark ALL=(ALL:ALL) NOPASSWD:/home/mark/.rootscripts/.up>
+mark ALL=(ALL:ALL) NOPASSWD:/usr/sbin/shutdown
