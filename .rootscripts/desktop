@@ -1,0 +1,5 @@
+rm $HOME/.rootscripts/tearing
+cp $HOME/.rootscripts/.tearing_desktop $HOME/.rootscripts/tearing
+
+xrandr --output HDMI-0 --off
+xrandr --output DP-2 --mode 1920x1080 --rate 144
