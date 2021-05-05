@@ -1,0 +1,30 @@
+#!/bin/bash
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install wget gnupg gnupg2 curl
+
+echo "updating to sid/experimental"
+sudo rm /etc/apt/sources.list
+sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+
+sudo dpkg --add-architecture i386
+sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --purge
+
+sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox
+
+echo "Adding sudoers"
+cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/mysudoers')
+
+echo "Adding my other hard drives"
+
+mkdir /home/mark/.data/
+mkdir /home/mark/.games/
+
+mountdrives
+
+ln -s /home/mark/.data/videos/movies/ /home/mark/movies
+ln -s /home/mark/.data/videos/tvshows/ /home/mark/tvshows
+ln -s /home/mark/.data/music/ /home/mark/music
+
+echo "Please restart computer"
+

@@ -1,0 +1,3 @@
+mark ALL=(ALL:ALL) NOPASSWD:/home/mark/.rootscripts/.update
+mark ALL=(ALL:ALL) NOPASSWD:/usr/sbin/shutdown
+mark ALL=(ALL:ALL) NOPASSWD:/home/mark/.rootscripts/.mountdrives
