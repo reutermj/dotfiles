@@ -20,7 +20,7 @@ echo "Adding my other hard drives"
 mkdir /home/mark/.data/
 mkdir /home/mark/.games/
 
-mountdrives
+/home/mark/.rootscripts/mountdrives
 
 ln -s /home/mark/.data/videos/movies/ /home/mark/movies
 ln -s /home/mark/.data/videos/tvshows/ /home/mark/tvshows
