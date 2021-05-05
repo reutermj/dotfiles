@@ -13,7 +13,11 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --purge
 
-sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox spotify-client cups
+sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox cups
+
+sudo apt-get update
+
+sudo apt-get install spotify-client
 
 sudo dpkg -i /home/mark/.installscripts/discord.deb
 sudo apt-get install --fix-broken
