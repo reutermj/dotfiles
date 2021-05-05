@@ -25,6 +25,7 @@ sudo dpkg -i /home/mark/.installscripts/discord.deb
 sudo apt-get -y install --fix-broken
 
 sudo apt-get -y autoremove --purge
+sudo apt-get -y autoclean
 
 sudo dpkg -i /home/mark/.installscripts/hll2320dlpr-3.2.0-1.i386.deb /home/mark/.installscripts/hll2320dcupswrapper-3.2.0-1.i386.deb
 
