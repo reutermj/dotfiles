@@ -29,5 +29,13 @@ ln -s /home/mark/.data/music/ /home/mark/music
 ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
 ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
 
+echo "Changing ownership of created files"
+sudo chown -R mark:mark /home/mark/.steam/
+sudo chown -R mark:mark /home/mark/music
+sudo chown -R mark:mark /home/mark/movies
+sudo chown -R mark:mark /home/mark/tvshows
+sudo chown -R mark:mark /home/mark/.data
+sudo chown -R mark:mark /home/mark/.games
+
 echo "Please restart computer"
 
