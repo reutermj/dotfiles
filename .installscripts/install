@@ -13,7 +13,7 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --purge
 
-sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox spotify
+sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox spotify-client
 
 echo "Adding sudoers"
 cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/mysudoers')
