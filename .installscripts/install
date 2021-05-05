@@ -16,7 +16,9 @@ sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --pu
 sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox cups
 
 sudo apt-get update
+sudo apt-get install spotify-client
 
+sudo apt-get update --fix-missing
 sudo apt-get install spotify-client
 
 sudo dpkg -i /home/mark/.installscripts/discord.deb
