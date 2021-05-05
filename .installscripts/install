@@ -17,6 +17,7 @@ cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo 
 
 echo "Adding my other hard drives"
 
+mkdir -p /home/mark/.steam/steam/
 mkdir /home/mark/.data/
 mkdir /home/mark/.games/
 
@@ -25,6 +26,8 @@ mkdir /home/mark/.games/
 ln -s /home/mark/.data/videos/movies/ /home/mark/movies
 ln -s /home/mark/.data/videos/tvshows/ /home/mark/tvshows
 ln -s /home/mark/.data/music/ /home/mark/music
+ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
+ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
 
 echo "Please restart computer"
 
