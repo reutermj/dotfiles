@@ -13,10 +13,12 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove --purge
 
-sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox spotify-client
+sudo apt-get install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox spotify-client cups
 
 sudo dpkg -i /home/mark/.installscripts/discord.deb
 sudo apt-get install --fix-broken
+
+sudo dpkg -i /home/mark/.installscripts/hll2320dlpr-3.2.0-1.i386.deb /home/mark/.installscripts/hll2320dcupswrapper-3.2.0-1.i386.deb
 
 echo "Adding sudoers"
 cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/mysudoers')
