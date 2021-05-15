@@ -16,7 +16,7 @@ echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox cups
+sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox cups qbittorrent
 
 sudo apt-get update
 sudo apt-get -y install spotify-client
