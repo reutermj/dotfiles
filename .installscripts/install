@@ -4,8 +4,8 @@ sudo apt-get upgrade
 sudo apt-get -y install wget gnupg gnupg2 curl
 
 echo "updating to sid/experimental"
-sudo rm /etc/apt/sources.list
-sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+#sudo rm /etc/apt/sources.list
+#sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -19,7 +19,7 @@ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ 
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox cups qbittorrent
+sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox-esr cups qbittorrent
 
 sudo apt-get update
 sudo apt-get -y install spotify-client
