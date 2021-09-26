@@ -66,5 +66,9 @@ sudo chown -R mark:mark /home/mark/tvshows
 sudo chown -R mark:mark /home/mark/.data
 sudo chown -R mark:mark /home/mark/.games
 
+echo "Changing Caps Lock to Super"
+sudo rm /usr/share/X11/xkb/symbols/pc
+sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
+
 echo "Please restart computer"
 
