@@ -4,8 +4,11 @@ sudo apt-get upgrade
 sudo apt-get -y install wget gnupg gnupg2 curl
 
 echo "updating to sid/experimental"
-#sudo rm /etc/apt/sources.list
-#sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+sudo rm /etc/apt/sources.list
+sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+
+sudo apt-get update
+sudo apt-get install -y libcrypt1
 
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
