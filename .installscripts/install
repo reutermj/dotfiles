@@ -7,65 +7,65 @@ echo "updating to sid/experimental"
 sudo rm /etc/apt/sources.list
 sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
-sudo apt-get update
-sudo apt-get install -y libcrypt1
+#sudo apt-get update
+#sudo apt-get install -y libcrypt1
 
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+#curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
+#echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
-curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | sudo apt-key add -
-echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
+#curl -s https://s3.eu-central-1.amazonaws.com/jetbrains-ppa/0xA6E8698A.pub.asc | sudo apt-key add -
+#echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main" | sudo tee /etc/apt/sources.list.d/jetbrains-ppa.list > /dev/null
 
-wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+#wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 
-sudo dpkg --add-architecture i386
-sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
+#sudo dpkg --add-architecture i386
+#sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox-esr cups qbittorrent
+#sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox-esr cups qbittorrent
 
-sudo apt-get update
-sudo apt-get -y install spotify-client
+#sudo apt-get update
+#sudo apt-get -y install spotify-client
 
-sudo apt-get update --fix-missing
-sudo apt-get -y install spotify-client
+#sudo apt-get update --fix-missing
+#sudo apt-get -y install spotify-client
 
-sudo apt-get -y install intellij-idea-community
-sudo apt-get -y install atom
+#sudo apt-get -y install intellij-idea-community
+#sudo apt-get -y install atom
 
-sudo apt-get -y autoremove --purge
-sudo apt-get -y autoclean
+#sudo apt-get -y autoremove --purge
+#sudo apt-get -y autoclean
 
-sudo dpkg -i /home/mark/.installscripts/hll2320dlpr-3.2.0-1.i386.deb /home/mark/.installscripts/hll2320dcupswrapper-3.2.0-1.i386.deb
+#sudo dpkg -i /home/mark/.installscripts/hll2320dlpr-3.2.0-1.i386.deb /home/mark/.installscripts/hll2320dcupswrapper-3.2.0-1.i386.deb
 
-echo "Adding sudoers"
-cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/mysudoers')
+#echo "Adding sudoers"
+#cat /home/mark/.installscripts/visudo_append | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/mysudoers')
 
-echo "Adding my other hard drives"
+#echo "Adding my other hard drives"
 
-mkdir -p /home/mark/.steam/steam/
-mkdir /home/mark/.data/
-mkdir /home/mark/.games/
+#mkdir -p /home/mark/.steam/steam/
+#mkdir /home/mark/.data/
+#mkdir /home/mark/.games/
 
-/home/mark/.rootscripts/mountdrives
+#/home/mark/.rootscripts/mountdrives
 
-ln -s /home/mark/.data/videos/movies/ /home/mark/movies
-ln -s /home/mark/.data/videos/tvshows/ /home/mark/tvshows
-ln -s /home/mark/.data/music/ /home/mark/music
-ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
-ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
+#ln -s /home/mark/.data/videos/movies/ /home/mark/movies
+#ln -s /home/mark/.data/videos/tvshows/ /home/mark/tvshows
+#ln -s /home/mark/.data/music/ /home/mark/music
+#ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
+#ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
 
-echo "Changing ownership of created files"
-sudo chown -R mark:mark /home/mark/.steam/
-sudo chown -R mark:mark /home/mark/music
-sudo chown -R mark:mark /home/mark/movies
-sudo chown -R mark:mark /home/mark/tvshows
-sudo chown -R mark:mark /home/mark/.data
-sudo chown -R mark:mark /home/mark/.games
+#echo "Changing ownership of created files"
+#sudo chown -R mark:mark /home/mark/.steam/
+#sudo chown -R mark:mark /home/mark/music
+#sudo chown -R mark:mark /home/mark/movies
+#sudo chown -R mark:mark /home/mark/tvshows
+#sudo chown -R mark:mark /home/mark/.data
+#sudo chown -R mark:mark /home/mark/.games
 
-echo "Changing Caps Lock to Super"
-sudo rm /usr/share/X11/xkb/symbols/pc
-sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
+#echo "Changing Caps Lock to Super"
+#sudo rm /usr/share/X11/xkb/symbols/pc
+#sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
 
-echo "Please restart computer"
+#echo "Please restart computer"
 
