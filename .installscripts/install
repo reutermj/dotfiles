@@ -24,7 +24,7 @@ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ 
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam pulseaudio rxvt-unicode dmenu feh compton pavucontrol vlc wine64 firefox-esr cups qbittorrent
+sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode dmenu feh compton chromium cups qbittorrent pipewire-pulse pavucontrol
 
 sudo apt-get update
 sudo apt-get -y install spotify-client
