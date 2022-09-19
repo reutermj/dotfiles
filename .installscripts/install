@@ -3,7 +3,7 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get -y install wget gnupg gnupg2 curl
 
-sudo dpkg -i libcrypt1_4.4.18-4_amd64.deb
+#sudo dpkg -i libcrypt1_4.4.18-4_amd64.deb
 
 echo "updating to sid/experimental"
 sudo rm /etc/apt/sources.list
