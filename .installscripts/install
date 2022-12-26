@@ -9,6 +9,9 @@ sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 sudo apt-get update
 
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/chrome.list
+
 curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add -
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 
@@ -18,7 +21,7 @@ echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol
+sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable
 
 sudo apt-get update
 sudo apt-get -y install spotify-client
