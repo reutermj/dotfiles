@@ -25,8 +25,6 @@ sudo apt-get -y install intellij-idea-community
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
 
-#sudo dpkg -i /home/mark/.installscripts/hll2320dlpr-3.2.0-1.i386.deb /home/mark/.installscripts/hll2320dcupswrapper-3.2.0-1.i386.deb
-
 #ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
 #ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
 
