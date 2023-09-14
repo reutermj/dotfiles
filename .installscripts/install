@@ -18,15 +18,12 @@ echo "deb http://jetbrains-ppa.s3-website.eu-central-1.amazonaws.com bionic main
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable
+sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth
 
 sudo apt-get -y install intellij-idea-community
 
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
-
-#ln -s /home/mark/.games/steamapps/ /home/mark/.steam/steam/steamapps
-#ln -s /home/mark/.games/compatibilitytools.d/ /home/mark/.steam/compatibilitytools.d
 
 echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
