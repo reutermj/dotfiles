@@ -24,4 +24,8 @@ echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
 sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
 
+echo "Fixing boot with nvidia driver"
+sudo rm /etc/default/grub
+sudo cp /home/mark/.installscripts/grub /etc/default/grub
+
 echo "Please restart computer"
