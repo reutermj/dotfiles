@@ -28,4 +28,6 @@ echo "Fixing boot with nvidia driver"
 sudo rm /etc/default/grub
 sudo cp /home/mark/.installscripts/grub /etc/default/grub
 
+sudo update-grub
+
 echo "Please restart computer"
