@@ -39,6 +39,6 @@ cd ..
 
 echo "updating bluetooth config"
 sudo rm /etc/bluetooth/input.conf
-sudo cp input.conf /etc/bluetooth/input.conf
+sudo cp /home/mark/.installscripts/input.conf /etc/bluetooth/input.conf
 
 echo "Please restart computer"
