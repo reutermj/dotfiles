@@ -22,7 +22,7 @@ sudo systemctl edit getty@tty1
 
 [Service]
 ExecStart=
-ExecStart=-/sbin/agetty --autologin root --noclear %I 38400 linux
+ExecStart=-/sbin/agetty --autologin mark --noclear %I 38400 linux
 
 systemctl enable getty@tty1.service
 restart
