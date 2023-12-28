@@ -3,9 +3,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get -y install wget gnupg gnupg2 curl
 
-echo "updating to sid/experimental"
-sudo rm /etc/apt/sources.list
-sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+#echo "updating to sid/experimental"
+#sudo rm /etc/apt/sources.list
+#sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 sudo apt-get update
 
