@@ -15,7 +15,7 @@ echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sud
 sudo dpkg --add-architecture i386
 sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez
+sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez openjdk-17-jdk vlc unzip
 
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
@@ -27,7 +27,16 @@ sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
 echo "Fixing boot with nvidia driver"
 sudo rm /etc/default/grub
 sudo cp /home/mark/.installscripts/grub /etc/default/grub
-
 sudo update-grub
+
+echo "installing xpadneo"
+git clone https://github.com/atar-axis/xpadneo.git
+cd xpadneo
+sudo ./install.sh
+cd ..
+
+echo "updating bluetooth config"
+sudo rm /etc/bluetooth/input.conf
+sudo cp input.conf /etc/bluetooth/input.conf
 
 echo "Please restart computer"
