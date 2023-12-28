@@ -13,7 +13,9 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key ad
 echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/chrome.list
 
 sudo dpkg --add-architecture i386
-sudo apt-get update && sudo apt-get -y dist-upgrade && sudo apt-get -y autoremove --purge
+sudo apt-get update 
+sudo apt-get -y dist-upgrade 
+sudo apt-get -y autoremove --purge
 
 sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez openjdk-17-jdk vlc unzip
 
