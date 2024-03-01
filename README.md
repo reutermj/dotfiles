@@ -30,5 +30,5 @@ restart
 
 For whatever reason, this fixes steam...
 ```
-sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove --purge
+sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove -y --purge
 ```
