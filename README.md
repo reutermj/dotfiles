@@ -27,3 +27,8 @@ ExecStart=-/sbin/agetty --autologin mark --noclear %I 38400 linux
 systemctl enable getty@tty1.service
 restart
 ```
+
+For whatever reason, this fixes steam...
+```
+sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove --purge
+```
