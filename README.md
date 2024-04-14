@@ -32,3 +32,7 @@ For whatever reason, this fixes steam...
 ```
 sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove -y --purge
 ```
+
+This seems to work for setting up vortex
+
+https://github.com/pikdum/steam-deck/tree/master
