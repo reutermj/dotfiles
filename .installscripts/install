@@ -3,9 +3,9 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get -y install wget gnupg gnupg2 curl
 
-#echo "updating to sid/experimental"
-#sudo rm /etc/apt/sources.list
-#sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
+echo "updating to sid/experimental"
+sudo rm /etc/apt/sources.list
+sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 sudo apt-get update
 
@@ -21,7 +21,6 @@ sudo dpkg --add-architecture i386
 sudo apt-get update 
 sudo apt-get -y dist-upgrade 
 sudo apt-get -y autoremove --purge
-
 
 sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez openjdk-17-jdk vlc unzip code dbus-x11
 
@@ -46,5 +45,8 @@ cd ..
 echo "updating bluetooth config"
 sudo rm /etc/bluetooth/input.conf
 sudo cp /home/mark/.installscripts/input.conf /etc/bluetooth/input.conf
+
+echo "Fixing steam"
+sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove -y --purge
 
 echo "Please restart computer"
