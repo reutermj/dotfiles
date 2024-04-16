@@ -1,2 +1,15 @@
 #!/bin/bash
-urxvt -e sudo $HOME/.rootscripts/.update
+read -n 1 -s -r -p "Press any key to update or close window to cancel"
+echo ""
+
+while ! timeout 0.2 ping -c 1 -n 8.8.8.8 &> /dev/null
+do
+	echo "Waiting for internet"
+done
+echo "Updating"
+
+sudo apt-get update &&
+sudo apt-get -y dist-upgrade &&
+sudo apt-get -y autoremove --purge &&
+sudo apt-get -y autoclean
+read -n 1 -s -r -p "Press any key to continue"
