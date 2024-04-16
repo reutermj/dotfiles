@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo /sbin/shutdown -h now
+systemctl poweroff
