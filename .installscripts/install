@@ -53,4 +53,6 @@ echo "Mounting data drive"
 mkdir /home/mark/data
 echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data/ auto rw,user,auto 0 0" > sudo tee -a /etc/fstab
 
+chmod +x /home/mark/.rootscripts/*
+
 echo "Please restart computer"
