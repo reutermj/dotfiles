@@ -55,7 +55,7 @@ echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data/ auto rw,user,au
 
 echo "Setting up auto login"
 sudo mkdir /etc/systemd/system/getty@tty1.service.d/
-cat /home/mark/.installscripts/login > sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
+cat /home/mark/.installscripts/login | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 systemctl enable getty@tty1.service
 
 chmod +x /home/mark/.rootscripts/*
