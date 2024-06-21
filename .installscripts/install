@@ -51,7 +51,7 @@ sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove -y --purge
 
 echo "Mounting data drive"
 mkdir /home/mark/data
-echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data/ auto rw,user,auto,exec 0 0" > sudo tee -a /etc/fstab
+echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data ext4 defaults 0 0" | sudo tee -a /etc/fstab
 
 echo "Setting up auto login"
 sudo mkdir /etc/systemd/system/getty@tty1.service.d/
