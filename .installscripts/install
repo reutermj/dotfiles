@@ -22,7 +22,7 @@ sudo apt-get update
 sudo apt-get -y dist-upgrade 
 sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez openjdk-17-jdk vlc unzip dbus-x11
+sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez vlc unzip dbus-x11
 
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
