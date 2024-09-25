@@ -5,15 +5,15 @@ sudo rm /etc/apt/sources.list
 sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 echo "Upgrading to unstable"
-sudo apt-get update 
-sudo apt-get -y dist-upgrade 
-sudo apt-get -y autoremove --purge
+sudo apt update 
+sudo apt -y dist-upgrade 
+sudo apt -y autoremove --purge
 
 echo "Installing base packages"
-sudo apt-get -y install xorg i3-wm nvidia-driver rxvt-unicode suckless-tools feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak
+sudo apt -y install xorg i3-wm nvidia-driver rxvt-unicode suckless-tools feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak
 
-sudo apt-get -y autoremove --purge
-sudo apt-get -y autoclean
+sudo apt -y autoremove --purge
+sudo apt -y autoclean
 
 echo "Adding flathub repo"
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
