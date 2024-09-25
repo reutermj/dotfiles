@@ -48,4 +48,7 @@ systemctl enable getty@tty1.service
 
 chmod +x /home/mark/.rootscripts/*
 
+echo "Update sudoers"
+cat /home/mark/.installscripts/visudo_append | sudo EDITOR='tee -a' visudo
+
 echo "Please restart computer"
