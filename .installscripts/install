@@ -1,20 +1,15 @@
 #!/bin/bash
-#sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get -y install wget gnupg gnupg2 curl
 
 echo "updating sources.list"
 sudo rm /etc/apt/sources.list
 sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
-sudo apt-get install wget gpg
-
-echo "Installing base packages"
-sudo dpkg --add-architecture i386
+echo "Upgrading to unstable"
 sudo apt-get update 
 sudo apt-get -y dist-upgrade 
 sudo apt-get -y autoremove --purge
 
+echo "Installing base packages"
 sudo apt-get -y install xorg i3-wm nvidia-driver rxvt-unicode suckless-tools feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak
 
 sudo apt-get -y autoremove --purge
