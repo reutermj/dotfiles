@@ -7,25 +7,21 @@ echo "updating sources.list"
 sudo rm /etc/apt/sources.list
 sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
-#sudo apt-get update
-
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-
 sudo apt-get install wget gpg
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
-echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+
 echo "Installing base packages"
 sudo dpkg --add-architecture i386
 sudo apt-get update 
 sudo apt-get -y dist-upgrade 
 sudo apt-get -y autoremove --purge
 
-sudo apt-get -y install xorg i3-wm nvidia-driver steam rxvt-unicode suckless-tools feh compton cups qbittorrent pulseaudio pavucontrol google-chrome-stable pulseaudio-module-bluetooth bluez vlc unzip dbus-x11 code
+sudo apt-get -y install xorg i3-wm nvidia-driver rxvt-unicode suckless-tools feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak
 
 sudo apt-get -y autoremove --purge
 sudo apt-get -y autoclean
+
+echo "Adding flathub repo"
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
@@ -46,9 +42,6 @@ echo "updating bluetooth config"
 sudo rm /etc/bluetooth/input.conf
 sudo cp /home/mark/.installscripts/input.conf /etc/bluetooth/input.conf
 
-echo "Fixing steam"
-sudo apt remove -y --purge xdg-desktop-portal* && sudo apt autoremove -y --purge
-
 echo "Mounting data drive"
 mkdir /home/mark/data
 echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data ext4 defaults 0 1" | sudo tee -a /etc/fstab
@@ -59,9 +52,5 @@ cat /home/mark/.installscripts/login | sudo tee /etc/systemd/system/getty@tty1.s
 systemctl enable getty@tty1.service
 
 chmod +x /home/mark/.rootscripts/*
-
-echo "Installing minecraft"
-sudo dpkg -i multimc_1.6-1.deb
-sudo apt install --fix-broken
 
 echo "Please restart computer"
