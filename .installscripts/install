@@ -17,7 +17,7 @@ sudo apt -y dist-upgrade
 sudo apt -y autoremove --purge
 
 echo "Installing base packages"
-sudo apt -y install xorg i3-wm nvidia-driver rxvt-unicode suckless-tools feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak steam-devices code
+sudo apt -y install xorg i3-wm nvidia-driver rxvt-unicode rofi feh compton cups pulseaudio pavucontrol pulseaudio-module-bluetooth bluez unzip flatpak steam-devices code
 
 sudo apt -y autoremove --purge
 sudo apt -y autoclean
