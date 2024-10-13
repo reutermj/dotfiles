@@ -28,7 +28,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 
 echo "Installing flatpaks"
 flatpak install -y flathub com.valvesoftware.Steam
-flatpak install -y flathub org.mozilla.firefox
+flatpak install -y com.google.Chrome
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.mojang.Minecraft
 flatpak install -y flathub com.discordapp.Discord
