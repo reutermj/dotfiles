@@ -32,6 +32,8 @@ flatpak install -y flathub org.mozilla.firefox
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.mojang.Minecraft
 flatpak install -y flathub com.discordapp.Discord
+flatpak install -y com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+python3 /home/mark/.rootscripts/nvidia_driver_flatpak.py
 
 echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
