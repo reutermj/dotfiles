@@ -12,4 +12,6 @@ sudo apt-get update &&
 sudo apt-get -y dist-upgrade &&
 sudo apt-get -y autoremove --purge &&
 sudo apt-get -y autoclean
+flatpak update
+python3 /home/mark/.rootscripts/nvidia_driver_flatpak.py
 read -n 1 -s -r -p "Press any key to continue"
