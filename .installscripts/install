@@ -29,6 +29,7 @@ echo "Installing flatpaks"
 flatpak install -y flathub com.valvesoftware.Steam
 flatpak install -y flathub org.mozilla.firefox
 flatpak install -y flathub com.github.tchx84.Flatseal
+flatpak install -y flathub com.mojang.Minecraft
 
 echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
