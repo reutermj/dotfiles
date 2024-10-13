@@ -3,7 +3,8 @@ URxvt.depth: 32
 URxvt.scrollBar: false
 URxvt.foreground: [100]#D4D4D4
 URxvt.font: xft:monaco:size=14
-
+URxvt.iso14755: false 
+URxvt.iso14755_52: false
 
 URxvt.color0: #646464
 URxvt.color1: #F58E8E
@@ -21,3 +22,5 @@ URxvt.color12: #7AABD4
 URxvt.color13: #D6ADD5
 URxvt.color14: #79D4D5
 URxvt.color15: #D4D4D4
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard 
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
