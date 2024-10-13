@@ -2,9 +2,10 @@
 
 echo "updating sources.list"
 sudo rm /etc/apt/sources.list
-sudo cp $HOME/.installscripts/sources.list /etc/apt/sources.list
+sudo cp /home/mark/.installscripts/sources.list /etc/apt/sources.list
 
 echo "adding vscode repo"
+sudo apt install gnupg2
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
@@ -33,33 +34,33 @@ flatpak install -y flathub com.mojang.Minecraft
 
 echo "Changing Caps Lock to Super"
 sudo rm /usr/share/X11/xkb/symbols/pc
-sudo cp $HOME/.installscripts/pc /usr/share/X11/xkb/symbols/pc
+sudo cp /home/mark/.installscripts/pc /usr/share/X11/xkb/symbols/pc
 
 echo "Fixing boot with nvidia driver"
 sudo rm /etc/default/grub
-sudo cp $HOME/.installscripts/grub /etc/default/grub
+sudo cp /home/mark/.installscripts/grub /etc/default/grub
 sudo update-grub
 
 echo "installing xpadneo"
-git clone https://github.com/atar-axis/xpadneo.git $HOME/.installscripts/xpadneo
-sudo $HOME/.installscripts/xpadneo/install.sh
+git clone https://github.com/atar-axis/xpadneo.git /home/mark/.installscripts/xpadneo
+sudo /home/mark/.installscripts/xpadneo/install.sh
 
 echo "updating bluetooth config"
 sudo rm /etc/bluetooth/input.conf
-sudo cp $HOME/.installscripts/input.conf /etc/bluetooth/input.conf
+sudo cp /home/mark/.installscripts/input.conf /etc/bluetooth/input.conf
 
 echo "Mounting data drive"
-mkdir $HOME/data
-echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f $HOME/data ext4 defaults 0 1" | sudo tee -a /etc/fstab
+mkdir /home/mark/data
+echo "UUID=996a7f1a-8791-4f04-9139-b700cf9b691f /home/mark/data ext4 defaults 0 1" | sudo tee -a /etc/fstab
 
 echo "Setting up auto login"
 sudo mkdir /etc/systemd/system/getty@tty1.service.d/
-cat $HOME/.installscripts/login | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
+cat /home/mark/.installscripts/login | sudo tee /etc/systemd/system/getty@tty1.service.d/override.conf
 systemctl enable getty@tty1.service
 
-chmod +x $HOME/.rootscripts/*
+chmod +x /home/mark/.rootscripts/*
 
 echo "Update sudoers"
-cat $HOME/.installscripts/visudo_append | sudo EDITOR='tee -a' visudo
+cat /home/mark/.installscripts/visudo_append | sudo EDITOR='tee -a' visudo
 
 echo "Please restart computer"
