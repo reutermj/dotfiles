@@ -22,12 +22,12 @@ sudo apt -y autoremove --purge
 
 echo "Installing base packages"
 sudo apt -y install \
-    nvidia-driver unzip flatpak \
+    nvidia-driver unzip flatpak p7zip-full \
     xorg i3-wm rxvt-unicode rofi feh compton \
     pulseaudio pavucontrol pulseaudio-module-bluetooth bluez \
     clang clangd clang-tidy clang-format lcov \
     code \
-    steam-devices 
+    steam-devices zenity
 
 sudo apt -y autoremove --purge
 sudo apt -y autoclean
