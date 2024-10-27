@@ -39,9 +39,9 @@ echo "Installing flatpaks"
 flatpak install -y flathub com.valvesoftware.Steam
 flatpak install -y com.google.Chrome
 flatpak install -y flathub com.github.tchx84.Flatseal
-flatpak install -y flathub com.mojang.Minecraft
+flatpak install -y flathub org.polymc.PolyMC
 flatpak install -y flathub com.discordapp.Discord
-flatpak install -y com.valvesoftware.Steam.CompatibilityTool.Proton-GE
+flatpak install -y flathub com.valvesoftware.Steam.CompatibilityTool.Proton-GE
 flatpak install -y flathub org.qbittorrent.qBittorrent
 flatpak install -y flathub org.videolan.VLC
 flatpak install -y flathub com.github.Matoking.protontricks
